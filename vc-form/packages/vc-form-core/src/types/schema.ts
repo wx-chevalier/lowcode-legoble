@@ -3,7 +3,7 @@ import { UiSchema } from 'react-jsonschema-form';
 
 /** 自定义的 JsonSchema */
 export interface VCJsonSchema extends JSONSchema6 {
-  formCode: string;
+  formCode?: string;
 }
 
 export interface VCUiSchema extends UiSchema {
