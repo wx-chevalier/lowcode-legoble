@@ -2,7 +2,7 @@ import cn from 'classnames';
 import * as React from 'react';
 import { WidgetProps } from 'react-jsonschema-form';
 
-import * as styles from './index.less';
+import './index.less';
 
 export interface ValidateResult {
   type: string;
@@ -22,7 +22,7 @@ export const VCWidget = () => {
   return (
     <section
       className={cn({
-        [styles.container]: true
+        'vc-form-widget': true
       })}
     />
   );

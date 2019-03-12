@@ -2,7 +2,7 @@ import cn from 'classnames';
 import * as React from 'react';
 import Form, { Widget, Field, ISubmitEvent, IChangeEvent } from 'react-jsonschema-form';
 
-import * as styles from './index.less';
+import './index.less';
 import { VCJsonSchema, VCUiSchema } from '../../types/schema';
 import { compare } from 'vc-form-core/src/types/validator';
 
@@ -51,6 +51,8 @@ const defaultProps = {
   formData: {},
   widgets: {}
 };
+
+const prefix = 'vc-form';
 
 export function VCForm({
   className,
@@ -133,11 +135,11 @@ export function VCForm({
     <section
       className={cn({
         [className || '']: className,
-        [styles.container]: true,
+        [`${prefix}-container`]: true,
 
-        [styles.disabled]: disabled,
-        [styles.readOnly]: readOnly,
-        [styles.noLabel]: noLabel
+        [`${prefix}-disabled`]: disabled,
+        [`${prefix}-read-only`]: readOnly,
+        [`${prefix}-no-label`]: noLabel
       })}
     >
       <Form

@@ -18,7 +18,7 @@ const buildEnv = {
 const moduleCSSLoader = {
   loader: 'css-loader',
   options: {
-    modules: true,
+    modules: false,
     sourceMap: false,
     importLoaders: 2,
     localIdentName: '[name]__[local]'

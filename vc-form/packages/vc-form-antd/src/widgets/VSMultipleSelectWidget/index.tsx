@@ -2,7 +2,7 @@ import { Input } from 'antd';
 import cn from 'classnames';
 import * as React from 'react';
 
-import * as styles from './index.less';
+import './index.less';
 import { VCWidgetProps } from '../VCWidget';
 import { filterValidateMessage, filterJsonSchemaOptions } from '../../types/filter';
 
@@ -39,8 +39,8 @@ export const VCInputWidget = ({
   return (
     <div
       className={cn({
-        [styles.container]: true,
-        [styles.hasError]: _errorType !== ''
+        'vc-form-widget': true,
+        'vc-form-widget-has-error': _errorType !== ''
       })}
     >
       <Input

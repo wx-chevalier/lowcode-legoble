@@ -5,7 +5,7 @@ import { VCForm, VCFormProps } from 'vc-form-core';
 
 import 'antd/dist/antd.less';
 
-import * as styles from './index.less';
+import './index.less';
 import { VCInputWidget } from '../../widgets/VCInputWidget';
 
 const customWidgets = {
@@ -13,6 +13,8 @@ const customWidgets = {
 };
 
 const customFields = {};
+
+const prefix = 'vc-antd-form';
 
 export interface VCAntdFormProps extends VCFormProps {}
 
@@ -27,7 +29,7 @@ export function VCAntdForm({
   const vcFormRef = React.useRef<any>(null);
 
   const defaultSubmitComp = (
-    <Button className={styles.submitButton} type="primary" htmlType="submit">
+    <Button className={`${prefix}-submit-comp`} type="primary" htmlType="submit">
       提交
     </Button>
   );
@@ -39,7 +41,7 @@ export function VCAntdForm({
     <section
       className={cn({
         [className || '']: className,
-        [styles.container]: true
+        'vc-form-widget': true
       })}
     >
       <VCForm
