@@ -4,6 +4,7 @@ import Form, { Widget, Field, ISubmitEvent, IChangeEvent } from 'react-jsonschem
 
 import * as styles from './index.less';
 import { VCJsonSchema, VCUiSchema } from '../../types/schema';
+import { compare } from 'vc-form-core/src/types/validator';
 
 export interface VCFormOptions {
   // 对齐位置
@@ -26,28 +27,42 @@ export interface VCFormRef {
 
 export interface VCFormProps extends VCFormOptions {
   className?: string;
+  children?: JSX.Element;
+  defaultSubmitComp?: JSX.Element;
   formContext?: object;
   formData?: object;
   fields?: { [name: string]: Field };
   jsonSchema: VCJsonSchema;
+  ref?: ($ref: any) => void;
+  popupContainer?: () => JSX.Element;
   uiSchema: VCUiSchema;
   widgets?: { [name: string]: Widget };
 
-  onChange?: () => {};
-  onError?: () => {};
-  onSubmit?: () => {};
+  onChange?: (formData: object) => void;
+  onError?: () => void;
+  onValidate?: (formData: object) => void;
+  onSubmit?: (formData: object) => void;
 }
 
 export interface VCFormState {}
 
-export function VCForm<T>({
+const defaultProps = {
+  formContext: {},
+  formData: {},
+  widgets: {}
+};
+
+export function VCForm({
   className,
+  children,
+  defaultSubmitComp,
   fields,
-  formContext = {},
-  formData = {},
+  formContext = defaultProps.formContext,
+  formData = defaultProps.formData,
   jsonSchema,
+  popupContainer,
   uiSchema,
-  widgets = {},
+  widgets = defaultProps.widgets,
 
   // Options
   alignType = 'inline',
@@ -63,9 +78,8 @@ export function VCForm<T>({
 }: VCFormProps) {
   const [isDirty, setIsDirty] = React.useState(false);
   const [innerFormData, setInnerFormData] = React.useState(formData);
-  const ref = React.useRef<{ focus: () => void }>();
 
-  const handleSubmit = (e: ISubmitEvent<object>) => {};
+  const ref = React.useRef<{ focus: () => void }>();
 
   /** 响应输入数据变化 */
   const handleChange = (e: IChangeEvent<object>) => {
@@ -74,8 +88,34 @@ export function VCForm<T>({
     }
 
     const currentFormData = e.formData;
+    let changedFieldName = '';
 
-    console.log(currentFormData);
+    Object.keys(currentFormData).forEach(fieldName => {
+      if (!compare(currentFormData[fieldName], innerFormData[fieldName])) {
+        changedFieldName = fieldName;
+      }
+    });
+
+    if (!changedFieldName) {
+      return;
+    }
+
+    // 执行表单校验，TODO
+
+    // 重新设置数据
+    setInnerFormData(currentFormData);
+
+    // 触发外部变化
+    if (onChange) {
+      onChange(currentFormData);
+    }
+  };
+
+  /** 响应提交操作 */
+  const handleSubmit = (e: ISubmitEvent<object>) => {
+    if (onSubmit) {
+      onSubmit(formData);
+    }
   };
 
   React.useImperativeHandle(ref, () => ({
@@ -84,7 +124,9 @@ export function VCForm<T>({
 
   // 当外部 Props 状态变化后，更新数据
   React.useEffect(() => {
-    setInnerFormData(formData);
+    if (formData) {
+      setInnerFormData(formData);
+    }
   }, [formData]);
 
   return (
@@ -99,6 +141,7 @@ export function VCForm<T>({
       })}
     >
       <Form
+        formContext={{ ...formContext, alignType, labelAlign, labelType, popupContainer }}
         formData={innerFormData}
         fields={fields}
         noValidate={true}
@@ -108,9 +151,11 @@ export function VCForm<T>({
         widgets={widgets}
         onChange={handleChange}
         onSubmit={handleSubmit}
-      />
+      >
+        {children || defaultSubmitComp}
+      </Form>
     </section>
   );
 }
 
-export default React.forwardRef(VCForm);
+export default VCForm;

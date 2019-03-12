@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { VCForm } from '../../src';
-import { VCJsonSchema } from '../../src/types/schema';
+import { VCJsonSchema } from 'vc-form-core';
+
+import { VCAntdForm } from '../../src/components/VCAntdForm';
 
 const jsonSchema: VCJsonSchema = {
   title: 'A registration form',
@@ -71,5 +72,5 @@ const uiSchema = {
 };
 
 export default function Simple() {
-  return <VCForm jsonSchema={jsonSchema} uiSchema={uiSchema} />;
+  return <VCAntdForm jsonSchema={jsonSchema} uiSchema={uiSchema} />;
 }

@@ -9,5 +9,9 @@ export interface VCJsonSchema extends JSONSchema6 {
 export interface VCUiSchema extends UiSchema {
   'ui:disabled'?: boolean;
   'ui:readonly'?: boolean;
+  'ui:hidden'?: boolean;
+
+  // 传入的样式类名
+  classNames?: string[];
   items?: VCUiSchema[];
 }

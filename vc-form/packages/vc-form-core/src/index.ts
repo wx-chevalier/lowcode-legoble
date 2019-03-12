@@ -1,1 +1,2 @@
-export { VCForm } from './components/VCForm';
+export * from './types/schema';
+export * from './components/VCForm';

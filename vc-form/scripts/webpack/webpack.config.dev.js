@@ -44,7 +44,7 @@ const config = {
     },
     host: '0.0.0.0',
     port: 8080,
-    hot: true,
+    hot: false,
     https: false,
     disableHostCheck: true,
     quiet: false
