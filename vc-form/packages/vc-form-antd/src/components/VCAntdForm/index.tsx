@@ -56,5 +56,3 @@ export function VCAntdForm({
     </section>
   );
 }
-
-export default React.forwardRef(VCForm);

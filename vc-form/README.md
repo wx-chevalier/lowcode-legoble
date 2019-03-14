@@ -9,3 +9,61 @@ vc-form 是动态表单解决方案，借鉴了著名的 [json-schema-form]()，
 ## packages
 
 ## BootStrap
+
+# Reference
+
+## Widget Map
+
+```js
+const widgetMap = {
+  boolean: {
+    checkbox: 'CheckboxWidget',
+    radio: 'RadioWidget',
+    select: 'SelectWidget',
+    hidden: 'HiddenWidget'
+  },
+  string: {
+    text: 'TextWidget',
+    password: 'PasswordWidget',
+    email: 'EmailWidget',
+    hostname: 'TextWidget',
+    ipv4: 'TextWidget',
+    ipv6: 'TextWidget',
+    uri: 'URLWidget',
+    'data-url': 'FileWidget',
+    radio: 'RadioWidget',
+    select: 'SelectWidget',
+    textarea: 'TextareaWidget',
+    hidden: 'HiddenWidget',
+    date: 'DateWidget',
+    datetime: 'DateTimeWidget',
+    'date-time': 'DateTimeWidget',
+    'alt-date': 'AltDateWidget',
+    'alt-datetime': 'AltDateTimeWidget',
+    color: 'ColorWidget',
+    file: 'FileWidget'
+  },
+  number: {
+    text: 'TextWidget',
+    select: 'SelectWidget',
+    updown: 'UpDownWidget',
+    range: 'RangeWidget',
+    radio: 'RadioWidget',
+    hidden: 'HiddenWidget'
+  },
+  integer: {
+    text: 'TextWidget',
+    select: 'SelectWidget',
+    updown: 'UpDownWidget',
+    range: 'RangeWidget',
+    radio: 'RadioWidget',
+    hidden: 'HiddenWidget'
+  },
+  array: {
+    select: 'SelectWidget',
+    checkboxes: 'CheckboxesWidget',
+    files: 'FileWidget',
+    hidden: 'HiddenWidget'
+  }
+};
+```

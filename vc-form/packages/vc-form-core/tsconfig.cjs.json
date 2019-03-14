@@ -4,7 +4,8 @@
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "dist/cjs",
-    "declaration": false,
+    "declaration": true,
+    "declarationDir": "dist/types",
     "sourceMap": false,
     "paths": {}
   },

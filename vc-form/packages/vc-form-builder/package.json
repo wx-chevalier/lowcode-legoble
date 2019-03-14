@@ -1,12 +1,12 @@
 {
   "author": "wxyyxc1992@github",
-  "description": "vc-form-antd",
+  "description": "vc-form-builder",
   "license": "MIT",
   "keywords": [
     "webpack",
     "react"
   ],
-  "name": "vc-form-antd",
+  "name": "vc-form-builder",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -34,16 +34,20 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "ajv": "^6.10.0",
     "antd": "^3.12.1",
+    "immer": "^2.1.2",
+    "jsoneditor": "^5.31.0",
+    "jsoneditor-react": "^1.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-jsonschema-form": "^1.3.0",
     "smoothscroll-polyfill": "^0.4.3",
-    "validator.js": "^2.0.3"
+    "validator.js": "^2.0.3",
+    "vc-form-antd": "*"
   },
   "devDependencies": {
-    "vc-form-core": "*",
     "@types/classnames": "^2.2.7",
     "@types/jest": "23.3.12",
     "@types/react-dom": "^16.0.11",

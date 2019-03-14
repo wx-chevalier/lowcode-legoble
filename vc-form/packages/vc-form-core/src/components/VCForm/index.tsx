@@ -1,10 +1,11 @@
 import cn from 'classnames';
 import * as React from 'react';
-import Form, { Widget, Field, ISubmitEvent, IChangeEvent } from 'react-jsonschema-form';
+import Form, { Widget, Field, IChangeEvent } from 'react-jsonschema-form';
 
 import './index.less';
 import { VCJsonSchema, VCUiSchema } from '../../types/schema';
 import { compare } from 'vc-form-core/src/types/validator';
+import { mergeFormDataWithDefault } from 'vc-form-core/src/types/getter';
 
 export interface VCFormOptions {
   // 对齐位置
@@ -114,9 +115,9 @@ export function VCForm({
   };
 
   /** 响应提交操作 */
-  const handleSubmit = (e: ISubmitEvent<object>) => {
+  const handleSubmit = () => {
     if (onSubmit) {
-      onSubmit(formData);
+      onSubmit(mergeFormDataWithDefault(jsonSchema, innerFormData));
     }
   };
 
