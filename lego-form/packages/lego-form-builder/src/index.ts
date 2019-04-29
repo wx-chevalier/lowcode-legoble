@@ -1,2 +1,1 @@
-
-export * from "./components/VCFormBuilder";
+export * from './components/LegoFormBuilder';

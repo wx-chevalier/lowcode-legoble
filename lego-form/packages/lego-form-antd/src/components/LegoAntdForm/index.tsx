@@ -46,7 +46,7 @@ export function LegoAntdForm({
     >
       <LegoForm
         {...otherProps}
-        defaultSubmitComp={defaultSubmitComp}
+        submitComp={defaultSubmitComp}
         fields={finalFields}
         widgets={finalWidgets}
         ref={($ref: any) => {

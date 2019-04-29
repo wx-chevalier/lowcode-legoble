@@ -5,7 +5,7 @@ import cn from 'classnames';
 import produce from 'immer';
 import * as React from 'react';
 
-import { VCAntdForm, VCAntdFormProps, VCJsonSchema, VCUiSchema } from 'lego-form-antd';
+import { LegoAntdForm, LegoAntdFormProps, LegoJsonSchema, LegoUiSchema } from 'lego-form-antd';
 
 import 'antd/dist/antd.less';
 import 'jsoneditor-react/es/editor.min.css';
@@ -14,21 +14,24 @@ import './index.less';
 import { MaterialsType, mapTypeToInitialConfig } from '../../materials';
 import { randomString } from '../../utils/ds';
 import JsonEditor from '../JsonEditor';
+import { FormSchemaProvider, useFormSchema } from '../../stores/form-schema/context';
 
 const { Button: RadioButton, Group: RadioGroup } = Radio;
 const ajv = new Ajv({ allErrors: true, verbose: true });
 
 const prefix = 'lego-form-builder';
 
-export interface VCFormBuilderProps extends VCAntdFormProps {}
+export interface LegoFormBuilderProps extends LegoAntdFormProps {}
 
-export function VCFormBuilder({
+export function LegoFormBuilderComp({
   className,
   jsonSchema: parentJsonSchema,
   uiSchema: parentUiSchema,
   ...otherProps
-}: VCFormBuilderProps) {
-  const [editorMode, setEditorMode] = React.useState('jsonEditor');
+}: LegoFormBuilderProps) {
+  const [state, dispatch] = useFormSchema();
+  const { editorMode } = state;
+
   const [platform, setPlatform] = React.useState('pc');
   const [isPreview, togglePreview] = React.useState(false);
   const [isDrawerVisible, setDrawerVisible] = React.useState(false);
@@ -36,11 +39,11 @@ export function VCFormBuilder({
   const [uiSchema, setUiSchema] = React.useState(parentUiSchema);
   const editorRef = React.useRef<HTMLDivElement>();
 
-  const handleJsonSchemaChange = (v: VCJsonSchema) => {
+  const handleJsonSchemaChange = (v: LegoJsonSchema) => {
     setJsonSchema(v);
   };
 
-  const handleUiSchemaChange = (v: VCUiSchema) => {
+  const handleUiSchemaChange = (v: LegoUiSchema) => {
     setUiSchema(v);
   };
 
@@ -129,7 +132,10 @@ export function VCFormBuilder({
               <RadioGroup
                 value={editorMode}
                 onChange={e => {
-                  setEditorMode(e.target.value);
+                  dispatch({
+                    type: 'changeEditorMode',
+                    value: e.target.value
+                  });
                 }}
               >
                 <RadioButton value="jsonEditor">JSON 编辑</RadioButton>
@@ -182,10 +188,16 @@ export function VCFormBuilder({
         )}
         {isPreview && (
           <div className={`${prefix}-preview`}>
-            <VCAntdForm jsonSchema={jsonSchema} uiSchema={uiSchema} {...otherProps} />
+            <LegoAntdForm jsonSchema={jsonSchema} uiSchema={uiSchema} {...otherProps} />
           </div>
         )}
       </div>
     </section>
   );
 }
+
+export const LegoFormBuilder = (props: LegoFormBuilderProps) => (
+  <FormSchemaProvider>
+    <LegoFormBuilderComp {...props} />
+  </FormSchemaProvider>
+);

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { VCJsonSchema } from 'lego-form-core';
+import { LegoJsonSchema } from 'lego-form-core';
 
-import { VCFormBuilder } from '../../src/components/VCFormBuilder';
+import { LegoFormBuilder } from '../../src/components/LegoFormBuilder';
 
-const jsonSchema: VCJsonSchema = {
+const jsonSchema: LegoJsonSchema = {
   title: 'A registration form',
   description: 'A simple form example.',
   type: 'object',
@@ -74,7 +74,7 @@ const uiSchema = {
 
 export default function Simple() {
   return (
-    <VCFormBuilder
+    <LegoFormBuilder
       jsonSchema={jsonSchema}
       uiSchema={uiSchema}
       onSubmit={data => {
