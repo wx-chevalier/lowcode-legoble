@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { VCForm } from '../../src';
-import { VCJsonSchema } from '../../src/types/schema';
+import { LegoForm } from '../../src';
+import { LegoJsonSchema } from '../../src/types/schema';
 
-const jsonSchema: VCJsonSchema = {
+const jsonSchema: LegoJsonSchema = {
   title: 'A registration form',
   description: 'A simple form example.',
   type: 'object',
@@ -71,5 +71,5 @@ const uiSchema = {
 };
 
 export default function Simple() {
-  return <VCForm jsonSchema={jsonSchema} uiSchema={uiSchema} />;
+  return <LegoForm jsonSchema={jsonSchema} uiSchema={uiSchema} />;
 }

@@ -1,2 +1,2 @@
 export * from './types/schema';
-export * from './components/VCForm';
+export * from './components/LegoForm';

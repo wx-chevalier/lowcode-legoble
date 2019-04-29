@@ -1,9 +1,8 @@
 /** 全局的获取规范 */
-
-import { VCJsonSchema } from './../../dist/types/types/schema.d';
+import { LegoJsonSchema } from './schema';
 
 /** 将用户填入的表单数据与 JsonSchema 中的默认数据合并 */
-export function mergeFormDataWithDefault(jsonSchema: VCJsonSchema, formData = {}) {
+export function mergeFormDataWithDefault(jsonSchema: LegoJsonSchema, formData = {}) {
   // 因为某个域不需要 uiSchema，因此要用 jsonSchema 来遍历
   const properties = jsonSchema.properties || {};
 
@@ -12,7 +11,7 @@ export function mergeFormDataWithDefault(jsonSchema: VCJsonSchema, formData = {}
   const finalFormData = { ...formData };
 
   propertyNames.forEach(propertyName => {
-    const property = properties[propertyName] as VCJsonSchema;
+    const property = properties[propertyName] as LegoJsonSchema;
 
     // 根据是否为数组进行提取
     if (

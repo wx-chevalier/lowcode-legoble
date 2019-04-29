@@ -3,11 +3,11 @@ import * as React from 'react';
 import Form, { Widget, Field, IChangeEvent } from 'react-jsonschema-form';
 
 import './index.less';
-import { VCJsonSchema, VCUiSchema } from '../../types/schema';
+import { LegoJsonSchema, LegoUiSchema } from '../../types/schema';
 import { compare } from 'lego-form-core/src/types/validator';
 import { mergeFormDataWithDefault } from 'lego-form-core/src/types/getter';
 
-export interface VCFormOptions {
+export interface LegoFormOptions {
   // 对齐位置
   alignType?: 'vertical' | 'inline';
   // 是否禁用
@@ -22,21 +22,21 @@ export interface VCFormOptions {
   noLabel?: boolean;
 }
 
-export interface VCFormRef {
+export interface LegoFormRef {
   [key: string]: () => void;
 }
 
-export interface VCFormProps extends VCFormOptions {
+export interface LegoFormProps extends LegoFormOptions {
   className?: string;
   children?: JSX.Element;
   defaultSubmitComp?: JSX.Element;
   formContext?: object;
   formData?: object;
   fields?: { [name: string]: Field };
-  jsonSchema: VCJsonSchema;
+  jsonSchema: LegoJsonSchema;
   ref?: ($ref: any) => void;
   popupContainer?: () => JSX.Element;
-  uiSchema: VCUiSchema;
+  uiSchema: LegoUiSchema;
   widgets?: { [name: string]: Widget };
 
   onChange?: (formData: object) => void;
@@ -45,7 +45,7 @@ export interface VCFormProps extends VCFormOptions {
   onSubmit?: (formData: object) => void;
 }
 
-export interface VCFormState {}
+export interface LegoFormState {}
 
 const defaultProps = {
   formContext: {},
@@ -55,7 +55,7 @@ const defaultProps = {
 
 const prefix = 'lego-form';
 
-export function VCForm({
+export function LegoForm({
   className,
   children,
   defaultSubmitComp,
@@ -78,7 +78,7 @@ export function VCForm({
   onChange,
   onError,
   onSubmit
-}: VCFormProps) {
+}: LegoFormProps) {
   const [isDirty, setIsDirty] = React.useState(false);
   const [innerFormData, setInnerFormData] = React.useState(formData);
 
@@ -161,4 +161,4 @@ export function VCForm({
   );
 }
 
-export default VCForm;
+export default LegoForm;
