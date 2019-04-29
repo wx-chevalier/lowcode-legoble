@@ -1,32 +1,32 @@
 import { Button } from 'antd';
 import cn from 'classnames';
 import * as React from 'react';
-import { VCForm, VCFormProps } from 'lego-form-core';
+import { LegoForm, LegoFormProps } from 'lego-form-core';
 
 import 'antd/dist/antd.less';
 
 import './index.less';
-import { VCInputWidget } from '../../widgets/VCInputWidget';
+import { LegoInputWidget } from '../../widgets/LegoInputWidget';
 
 const customWidgets = {
-  TextWidget: VCInputWidget
+  TextWidget: LegoInputWidget
 };
 
 const customFields = {};
 
-const prefix = 'vc-antd-form';
+const prefix = 'lego-antd-form';
 
-export interface VCAntdFormProps extends VCFormProps {}
+export interface LegoAntdFormProps extends LegoFormProps {}
 
-export function VCAntdForm({
+export function LegoAntdForm({
   className,
   fields,
   formData = {},
   widgets = {},
 
   ...otherProps
-}: VCAntdFormProps) {
-  const vcFormRef = React.useRef<any>(null);
+}: LegoAntdFormProps) {
+  const legoFormRef = React.useRef<any>(null);
 
   const defaultSubmitComp = (
     <Button className={`${prefix}-submit-comp`} type="primary" htmlType="submit">
@@ -44,13 +44,13 @@ export function VCAntdForm({
         'lego-form-widget': true
       })}
     >
-      <VCForm
+      <LegoForm
         {...otherProps}
         defaultSubmitComp={defaultSubmitComp}
         fields={finalFields}
         widgets={finalWidgets}
         ref={($ref: any) => {
-          vcFormRef.current = $ref;
+          legoFormRef.current = $ref;
         }}
       />
     </section>

@@ -1,4 +1,4 @@
 export * from 'lego-form-core';
 
-export * from './components/VCAntdForm';
-export * from './widgets/VCInputWidget/index';
+export * from './components/LegoAntdForm';
+export * from './widgets/LegoInputWidget/index';

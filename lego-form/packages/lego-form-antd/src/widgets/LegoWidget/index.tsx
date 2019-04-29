@@ -9,16 +9,16 @@ export interface ValidateResult {
   message: string;
 }
 
-export interface VCWidgetOptions {
+export interface LegoWidgetOptions {
   _errorType: string;
   validate: [ValidateResult];
 }
 
-export interface VCWidgetProps extends WidgetProps {
-  options: VCWidgetOptions;
+export interface LegoWidgetProps extends WidgetProps {
+  options: LegoWidgetOptions;
 }
 
-export const VCWidget = () => {
+export const LegoWidget = () => {
   return (
     <section
       className={cn({

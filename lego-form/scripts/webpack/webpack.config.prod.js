@@ -25,13 +25,13 @@ const config = {
       ),
       {
         test: /\.css$/,
-        use: ['style - loader', 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less$/,
         exclude: /node_modules/,
         use: [
-          'style - loader',
+          'style-loader',
           baseConfig.extra.moduleCSSLoader,
           'postcss-loader',
           baseConfig.extra.lessLoader
@@ -40,7 +40,7 @@ const config = {
       {
         test: /\.less$/,
         include: /node_modules/,
-        use: ['style - loader', 'css-loader', 'postcss-loader', baseConfig.extra.lessLoader]
+        use: ['style-loader', 'css-loader', 'postcss-loader', baseConfig.extra.lessLoader]
       }
     ]
   },

@@ -3,12 +3,12 @@ import cn from 'classnames';
 import * as React from 'react';
 
 import './index.less';
-import { VCWidgetProps } from '../VCWidget';
+import { LegoWidgetProps } from '../LegoWidget';
 import { filterValidateMessage, filterJsonSchemaOptions } from '../../types/filter';
 
-export interface VCInputWidgetProps extends VCWidgetProps {}
+export interface LegoInputWidgetProps extends LegoWidgetProps {}
 
-export const VCInputWidget = ({
+export const LegoInputWidget = ({
   schema,
   autofocus = false,
   disabled = false,
@@ -17,7 +17,7 @@ export const VCInputWidget = ({
   options,
   readonly = false,
   onChange
-}: VCInputWidgetProps) => {
+}: LegoInputWidgetProps) => {
   const [innerValue, setInnerValue] = React.useState(value);
 
   const { _errorType, validate } = options;

@@ -1,4 +1,4 @@
-import { ValidateResult } from '../widgets/VCWidget';
+import { ValidateResult } from '../widgets/LegoWidget';
 
 /** 过滤掉 react-json-schema 中的属性 */
 export function filterJsonSchemaOptions(options: object) {
