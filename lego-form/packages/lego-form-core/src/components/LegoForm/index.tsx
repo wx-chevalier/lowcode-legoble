@@ -4,8 +4,8 @@ import Form, { Widget, Field, IChangeEvent } from 'react-jsonschema-form';
 
 import './index.less';
 import { LegoJsonSchema, LegoUiSchema } from '../../types/schema';
-import { compare } from 'lego-form-core/src/types/validator';
-import { mergeFormDataWithDefault } from 'lego-form-core/src/types/getter';
+import { compare } from '../../types/validator';
+import { mergeFormDataWithDefault } from '../../types/getter';
 
 export interface LegoFormOptions {
   // 对齐位置
@@ -29,13 +29,13 @@ export interface LegoFormRef {
 export interface LegoFormProps extends LegoFormOptions {
   className?: string;
   children?: JSX.Element;
-  defaultSubmitComp?: JSX.Element;
   formContext?: object;
   formData?: object;
   fields?: { [name: string]: Field };
   jsonSchema: LegoJsonSchema;
   ref?: ($ref: any) => void;
   popupContainer?: () => JSX.Element;
+  submitComp?: JSX.Element;
   uiSchema: LegoUiSchema;
   widgets?: { [name: string]: Widget };
 
@@ -45,56 +45,58 @@ export interface LegoFormProps extends LegoFormOptions {
   onSubmit?: (formData: object) => void;
 }
 
-export interface LegoFormState {}
-
-const defaultProps = {
-  formContext: {},
-  formData: {},
-  widgets: {}
-};
+export interface LegoFormState {
+  isDirty: boolean;
+  formData: object;
+}
 
 const prefix = 'lego-form';
 
-export function LegoForm({
-  className,
-  children,
-  defaultSubmitComp,
-  fields,
-  formContext = defaultProps.formContext,
-  formData = defaultProps.formData,
-  jsonSchema,
-  popupContainer,
-  uiSchema,
-  widgets = defaultProps.widgets,
+export class LegoForm extends React.PureComponent<LegoFormProps, LegoFormState> {
+  static defaultProps = {
+    formContext: {},
+    formData: {},
+    widgets: {}
+  };
 
-  // Options
-  alignType = 'inline',
-  disabled = false,
-  labelType = 'inline',
-  labelAlign = 'left',
-  readOnly = false,
-  noLabel = false,
+  state = { isDirty: false, formData: this.props.formData || {} };
 
-  onChange,
-  onError,
-  onSubmit
-}: LegoFormProps) {
-  const [isDirty, setIsDirty] = React.useState(false);
-  const [innerFormData, setInnerFormData] = React.useState(formData);
+  componentWillReceiveProps(nextProps: LegoFormProps) {
+    const { formData = {} } = nextProps;
 
-  const ref = React.useRef<{ focus: () => void }>();
+    if (formData !== this.props.formData) {
+      this.setState({
+        formData
+      });
+    }
+  }
 
-  /** 响应输入数据变化 */
-  const handleChange = (e: IChangeEvent<object>) => {
+  componentDidMount() {}
+
+  handleSubmit = () => {
+    const { jsonSchema, onSubmit } = this.props;
+    const { formData } = this.state;
+
+    if (onSubmit) {
+      onSubmit(mergeFormDataWithDefault(jsonSchema, formData));
+    }
+  };
+
+  handleChange = (e: IChangeEvent<object>) => {
+    const { onChange } = this.props;
+    const { formData, isDirty } = this.state;
+
     if (!isDirty) {
-      setIsDirty(isDirty);
+      this.setState({
+        isDirty: true
+      });
     }
 
     const currentFormData = e.formData;
     let changedFieldName = '';
 
     Object.keys(currentFormData).forEach(fieldName => {
-      if (!compare(currentFormData[fieldName], innerFormData[fieldName])) {
+      if (!compare(currentFormData[fieldName], formData[fieldName])) {
         changedFieldName = fieldName;
       }
     });
@@ -106,7 +108,9 @@ export function LegoForm({
     // 执行表单校验，TODO
 
     // 重新设置数据
-    setInnerFormData(currentFormData);
+    this.setState({
+      formData: currentFormData
+    });
 
     // 触发外部变化
     if (onChange) {
@@ -114,51 +118,56 @@ export function LegoForm({
     }
   };
 
-  /** 响应提交操作 */
-  const handleSubmit = () => {
-    if (onSubmit) {
-      onSubmit(mergeFormDataWithDefault(jsonSchema, innerFormData));
-    }
-  };
+  render() {
+    const {
+      className,
+      children,
+      fields,
+      formContext,
+      jsonSchema,
+      popupContainer,
+      submitComp,
+      uiSchema,
+      widgets,
 
-  React.useImperativeHandle(ref, () => ({
-    focus: () => {}
-  }));
+      // Options
+      alignType = 'inline',
+      disabled = false,
+      labelType = 'inline',
+      labelAlign = 'left',
+      readOnly = false,
+      noLabel = false
+    } = this.props;
 
-  // 当外部 Props 状态变化后，更新数据
-  React.useEffect(() => {
-    if (formData) {
-      setInnerFormData(formData);
-    }
-  }, [formData]);
+    const { formData } = this.state;
 
-  return (
-    <section
-      className={cn({
-        [className || '']: className,
-        [`${prefix}-container`]: true,
+    return (
+      <section
+        className={cn({
+          [className || '']: className,
+          [`${prefix}-container`]: true,
 
-        [`${prefix}-disabled`]: disabled,
-        [`${prefix}-read-only`]: readOnly,
-        [`${prefix}-no-label`]: noLabel
-      })}
-    >
-      <Form
-        formContext={{ ...formContext, alignType, labelAlign, labelType, popupContainer }}
-        formData={innerFormData}
-        fields={fields}
-        noValidate={true}
-        schema={jsonSchema}
-        showErrorList={false}
-        uiSchema={uiSchema}
-        widgets={widgets}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
+          [`${prefix}-disabled`]: disabled,
+          [`${prefix}-read-only`]: readOnly,
+          [`${prefix}-no-label`]: noLabel
+        })}
       >
-        {children || defaultSubmitComp}
-      </Form>
-    </section>
-  );
+        <Form
+          formContext={{ ...formContext, alignType, labelAlign, labelType, popupContainer }}
+          formData={formData}
+          fields={fields}
+          noHtml5Validate={true}
+          noValidate={true}
+          schema={jsonSchema}
+          showErrorList={false}
+          uiSchema={uiSchema}
+          widgets={widgets}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+        >
+          {children || submitComp}
+        </Form>
+      </section>
+    );
+  }
 }
-
-export default LegoForm;

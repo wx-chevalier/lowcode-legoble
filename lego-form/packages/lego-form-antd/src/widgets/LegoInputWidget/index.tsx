@@ -1,29 +1,26 @@
 import { Input } from 'antd';
-import cn from 'classnames';
 import * as React from 'react';
 
 import './index.less';
-import { LegoWidgetProps } from '../LegoWidget';
-import { filterValidateMessage, filterJsonSchemaOptions } from '../../types/filter';
+import { LegoWidget, LegoWidgetProps } from '../LegoWidget';
+import { filterJsonSchemaOptions } from '../../types/filter';
 
 export interface LegoInputWidgetProps extends LegoWidgetProps {}
 
-export const LegoInputWidget = ({
-  schema,
-  autofocus = false,
-  disabled = false,
-  placeholder = '',
-  value,
-  options,
-  readonly = false,
-  onChange
-}: LegoInputWidgetProps) => {
+export const LegoInputWidget = (props: LegoInputWidgetProps) => {
+  const {
+    schema,
+    autofocus = false,
+    disabled = false,
+    placeholder = '',
+    value,
+    options,
+    readonly = false,
+    onChange
+  } = props;
+
   const [innerValue, setInnerValue] = React.useState(value);
 
-  const { _errorType, validate } = options;
-
-  // 提取出错误信息
-  const errorMessage = filterValidateMessage(_errorType, validate);
   const otherOptions = filterJsonSchemaOptions(options);
 
   const { minLength = 0, maxLength = Infinity } = schema;
@@ -37,12 +34,7 @@ export const LegoInputWidget = ({
   };
 
   return (
-    <div
-      className={cn({
-        'lego-form-widget': true,
-        'lego-form-widget-has-error': _errorType !== ''
-      })}
-    >
+    <LegoWidget {...props}>
       <Input
         autoFocus={autofocus}
         disabled={disabled}
@@ -54,7 +46,6 @@ export const LegoInputWidget = ({
         {...otherOptions}
         onChange={handleChange}
       />
-      <div className="ant-form-explain">{errorMessage}</div>
-    </div>
+    </LegoWidget>
   );
 };
