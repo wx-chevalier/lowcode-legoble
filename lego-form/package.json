@@ -1,5 +1,5 @@
 {
-  "name": "webpack-react-ts",
+  "name": "lego-form",
   "version": "0.0.1",
   "description": "Micro-Frontend Boilerplate, with React & TS & Webpack",
   "repository": {
@@ -34,11 +34,12 @@
     "lint": "tslint -c tslint.json 'src/**/*.(ts|tsx)'",
     "precommit": "lint-staged",
     "prettier-all": "prettier --write 'src/**/*' '!src/{assets,datas}/**'",
+    "pub": "npm run build && lerna publish",
     "start": "webpack-dashboard -- npm run dev",
     "test": "jest --config ./scripts/jest/jest.config.js",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm run cleanCov && npm test -- --coverage",
-    "upgrade": "./scripts/tools/upgrade_pkgs.sh"
+    "upgrade": "./scripts/upgrade_pkgs.sh"
   },
   "devDependencies": {
     "@types/jest": "24.0.9",
