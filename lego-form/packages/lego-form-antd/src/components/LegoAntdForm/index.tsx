@@ -7,9 +7,17 @@ import 'antd/dist/antd.less';
 
 import './index.less';
 import { LegoInputWidget } from '../../widgets/LegoInputWidget';
+import { LegoSingleSelectWidget } from '../../widgets/LegoSingleSelectWidget';
+import { LegoMultipleSelectWidget } from '../../widgets/LegoMultipleSelectWidget/index';
+import { LegoTextareaWidget } from '../../widgets/LegoTextareaWidget';
+import { LegoDatePicker } from '../../widgets/LegoDatePicker/index';
 
 const customWidgets = {
-  TextWidget: LegoInputWidget
+  DateWidget: LegoDatePicker,
+  TextWidget: LegoInputWidget,
+  TextareaWidget: LegoTextareaWidget,
+  SelectWidget: LegoSingleSelectWidget,
+  multipleSelect: LegoMultipleSelectWidget
 };
 
 const customFields = {};
@@ -46,9 +54,10 @@ export function LegoAntdForm({
     >
       <LegoForm
         {...otherProps}
-        submitComp={defaultSubmitComp}
+        formData={formData}
         fields={finalFields}
         widgets={finalWidgets}
+        submitComp={defaultSubmitComp}
         ref={($ref: any) => {
           legoFormRef.current = $ref;
         }}

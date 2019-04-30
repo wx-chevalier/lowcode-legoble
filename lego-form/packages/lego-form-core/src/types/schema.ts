@@ -2,7 +2,20 @@ import { JSONSchema6 } from 'json-schema';
 import { UiSchema } from 'react-jsonschema-form';
 
 /** 自定义的 JsonSchema */
-export interface LegoJsonSchema extends JSONSchema6 {}
+export interface LegoJsonSchema extends JSONSchema6 {
+  /** Override origin schema definition */
+  enum?:
+    | string[]
+    | number[]
+    | {
+        label: string;
+        value: string | number | undefined;
+      }[]
+    | undefined;
+  properties?: {
+    [k: string]: LegoJsonSchema;
+  };
+}
 
 export interface LegoUiSchema extends UiSchema {
   'ui:disabled'?: boolean;
@@ -17,7 +30,7 @@ export interface LegoUiSchema extends UiSchema {
   items?: LegoUiSchema[];
 }
 
-export interface VCSchema {
+export interface LegoSchema {
   formCode?: string;
   jsonSchema: LegoJsonSchema;
   uiSchame: UiSchema;

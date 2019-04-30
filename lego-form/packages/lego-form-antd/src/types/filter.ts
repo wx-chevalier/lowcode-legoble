@@ -4,12 +4,15 @@ import { ValidateResult } from '../widgets/LegoWidget';
 export function filterJsonSchemaOptions(options: object) {
   const onlyOptions = [
     'autofocus',
+    'autosize',
     'disabled',
     'emptyValue',
-    'enumOptions',
-    'readonly',
+    'enum',
     'help',
-    'inputType'
+    'inputType',
+    'placeholder',
+    'readonly',
+    'showAllOption'
   ];
 
   const filteredOptions = { ...options };

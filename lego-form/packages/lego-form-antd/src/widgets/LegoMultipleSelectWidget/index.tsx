@@ -1,35 +1,46 @@
-import { Input } from 'antd';
-import cn from 'classnames';
+import { Select } from 'antd';
 import * as React from 'react';
 
 import './index.less';
-import { LegoWidgetProps } from '../LegoWidget';
-import { filterValidateMessage, filterJsonSchemaOptions } from '../../types/filter';
+import { LegoWidget, LegoWidgetProps } from '../LegoWidget';
+import { filterJsonSchemaOptions } from '../../types/filter';
+import { isValidArray } from 'lego-form-antd/src/types/validator';
 
-export interface LegoInputWidgetProps extends LegoWidgetProps {}
+const { Option } = Select;
+const prefix = 'lego-multiple-select-widget';
 
-export const LegoInputWidget = ({
-  schema,
-  autofocus = false,
-  disabled = false,
-  placeholder = '',
-  value,
-  options,
-  readonly = false,
-  onChange
-}: LegoInputWidgetProps) => {
-  const [innerValue, setInnerValue] = React.useState(value);
+export interface LegoMultipleSelectWidgetProps extends LegoWidgetProps {}
 
-  const { _errorType, validate } = options;
+export const LegoMultipleSelectWidget = (props: LegoMultipleSelectWidgetProps) => {
+  const {
+    autofocus = false,
+    disabled = false,
+    id,
+    placeholder = '',
+    schema,
+    value,
+    options,
+    onChange
+  } = props;
 
-  // 提取出错误信息
-  const errorMessage = filterValidateMessage(_errorType, validate);
+  const [innerValue, setInnerValue] = React.useState(value === '' ? [] : value);
+
   const otherOptions = filterJsonSchemaOptions(options);
 
-  const { minLength = 0, maxLength = Infinity } = schema;
+  let { enumOptions = [] } = options;
 
-  const handleChange = (event: any) => {
-    const newValue = event.target.value;
+  if (schema.enum && isValidArray(schema.enum)) {
+    if (typeof schema.enum[0] === 'object') {
+      enumOptions = schema.enum as any;
+    } else {
+      enumOptions = (schema.enum as string[]).map(e => ({
+        label: e,
+        value: e
+      }));
+    }
+  }
+
+  const handleChange = (newValue: string | number) => {
     setInnerValue(newValue);
     if (onChange) {
       onChange(newValue);
@@ -37,24 +48,30 @@ export const LegoInputWidget = ({
   };
 
   return (
-    <div
-      className={cn({
-        'lego-form-widget': true,
-        'lego-form-widget-has-error': _errorType !== ''
-      })}
-    >
-      <Input
-        autoFocus={autofocus}
-        disabled={disabled}
-        maxLength={maxLength}
-        minLength={minLength}
-        placeholder={placeholder}
-        readOnly={readonly}
-        value={innerValue}
-        {...otherOptions}
-        onChange={handleChange}
-      />
-      <div className="ant-form-explain">{errorMessage}</div>
-    </div>
+    <LegoWidget {...props}>
+      <div className={prefix}>
+        <Select
+          id={id}
+          value={innerValue}
+          allowClear={true}
+          autoFocus={autofocus}
+          disabled={disabled}
+          mode="multiple"
+          // showAllOption={showAllOption}
+          showSearch={true}
+          placeholder={placeholder}
+          optionFilterProp="children"
+          optionLabelProp="title"
+          {...otherOptions}
+          onChange={handleChange}
+        >
+          {enumOptions.map((option, index) => (
+            <Option key={index} title={option.label} value={option.value}>
+              {option.label}
+            </Option>
+          ))}
+        </Select>
+      </div>
+    </LegoWidget>
   );
 };

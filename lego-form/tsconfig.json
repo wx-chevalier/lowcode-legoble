@@ -16,9 +16,9 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "allowUnusedLabels": true,
+    "noUnusedLocals": false,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "paths": {

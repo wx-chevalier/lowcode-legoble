@@ -22,15 +22,6 @@ const jsonSchema: LegoJsonSchema = {
       type: 'integer',
       title: 'Age'
     },
-    bio: {
-      type: 'string',
-      title: 'Bio'
-    },
-    role: {
-      type: 'string',
-      title: 'Role',
-      enum: ['Admin', 'Develop']
-    },
     password: {
       type: 'string',
       title: 'Password',
@@ -40,6 +31,10 @@ const jsonSchema: LegoJsonSchema = {
       type: 'string',
       title: 'Telephone',
       minLength: 10
+    },
+    textarea: {
+      type: 'string',
+      title: 'Textarea'
     }
   }
 };
@@ -54,20 +49,17 @@ const uiSchema = {
     'ui:title': 'Age of person',
     'ui:description': '(earthian year)'
   },
-  bio: {
-    'ui:widget': 'textarea'
-  },
   password: {
     'ui:widget': 'password',
     'ui:help': 'Hint: Make it strong!'
-  },
-  date: {
-    'ui:widget': 'alt-datetime'
   },
   telephone: {
     'ui:options': {
       inputType: 'tel'
     }
+  },
+  textarea: {
+    'ui:widget': 'textarea'
   }
 };
 

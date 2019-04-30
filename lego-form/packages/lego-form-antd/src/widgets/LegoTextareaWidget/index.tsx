@@ -1,23 +1,34 @@
 import { Input } from 'antd';
+
 import * as React from 'react';
 
 import './index.less';
 import { LegoWidget, LegoWidgetProps } from '../LegoWidget';
 import { filterJsonSchemaOptions } from '../../types/filter';
 
-export interface LegoInputWidgetProps extends LegoWidgetProps {}
+const { TextArea } = Input;
+
+export interface LegoTextareaWidgetProps extends LegoWidgetProps {}
 
 const prefix = 'lego-input-widget';
 
-export const LegoInputWidget = (props: LegoInputWidgetProps) => {
-  const { schema, disabled = false, value, options, onChange } = props;
+export const LegoTextareaWidget = (props: LegoTextareaWidgetProps) => {
+  const {
+    disabled = false,
+    placeholder = '',
+    value,
+    options,
+
+    onChange
+  } = props;
 
   const [innerValue, setInnerValue] = React.useState(value);
 
-  const { autoFocus, placeholder, readOnly } = options;
+  const { autoFocus = false, readOnly = false } = options;
+
   const otherOptions = filterJsonSchemaOptions(options);
 
-  const { minLength = 0, maxLength = Infinity } = schema;
+  const { autosize = { minRows: 2, maxRows: 5 } } = options;
 
   const handleChange = (event: any) => {
     const newValue = event.target.value;
@@ -30,11 +41,10 @@ export const LegoInputWidget = (props: LegoInputWidgetProps) => {
   return (
     <LegoWidget {...props}>
       <div className={prefix}>
-        <Input
+        <TextArea
           autoFocus={autoFocus}
+          autosize={autosize}
           disabled={disabled}
-          maxLength={maxLength}
-          minLength={minLength}
           placeholder={placeholder}
           readOnly={readOnly}
           value={innerValue}

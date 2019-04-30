@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "antd": "^3.16.6",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -53,6 +54,7 @@
     "@types/validator": "^10.11.0",
     "autoprefixer": "9.5.1",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^6.26.3",
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.3",
     "copyfiles": "^2.1.0",
