@@ -7,7 +7,7 @@
     "react"
   ],
   "name": "lego-form-core",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/wxyyxc1992/Legoble"

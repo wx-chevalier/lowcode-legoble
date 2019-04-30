@@ -7,7 +7,7 @@
     "react"
   ],
   "name": "lego-form-antd",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/wxyyxc1992/Legoble"
@@ -44,7 +44,6 @@
     "validator.js": "^2.0.3"
   },
   "devDependencies": {
-    "lego-form-core": "*",
     "@types/classnames": "^2.2.7",
     "@types/jest": "24.0.12",
     "@types/react-dom": "^16.8.4",
@@ -66,6 +65,7 @@
     "jest": "24.7.1",
     "jest-cli": "24.7.1",
     "json-server": "0.14.2",
+    "lego-form-core": "^0.0.1-alpha.1",
     "lerna": "^3.13.4",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
