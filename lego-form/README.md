@@ -6,13 +6,19 @@
 
 lego-form 是动态表单解决方案，借鉴了著名的 [json-schema-form]()，其设计与理论归纳在了 [Web 开发中的工程实践 https://url.wx-coder.cn/jXxlM ](https://url.wx-coder.cn/jXxlM)系列文章中。
 
-![image](https://user-images.githubusercontent.com/5803001/47982572-2d8e7200-e10b-11e8-827c-eec782a37348.png)
+![](https://i.postimg.cc/HnXYkbZS/image.png)
 
 # Development
 
 ## packages
 
-## BootStrap
+- publish
+
+```sh
+$ npm run pub
+```
+
+## bootStrap
 
 # Reference
 
