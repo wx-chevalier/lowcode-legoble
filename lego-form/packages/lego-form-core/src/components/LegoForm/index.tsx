@@ -16,8 +16,6 @@ export interface LegoFormOptions {
   labelType?: 'vertical' | 'inline';
   // 标签位置
   labelAlign?: 'left' | 'right';
-  // 是否只读
-  readOnly?: boolean;
   // 是否不显示标签
   noLabel?: boolean;
 }
@@ -27,17 +25,23 @@ export interface LegoFormRef {
 }
 
 export interface LegoFormProps extends LegoFormOptions {
+  // schema & template
+  fieldTemplate?: object;
+  arrayFieldTemplate?: object;
+  objectFieldTemplate?: object;
+  jsonSchema: LegoJsonSchema;
+  uiSchema: LegoUiSchema;
+  submitComp?: JSX.Element;
+  fields?: { [name: string]: Field };
+  widgets?: { [name: string]: Widget };
+
+  // jsx
   className?: string;
   children?: JSX.Element;
   formContext?: object;
   formData?: object;
-  fields?: { [name: string]: Field };
-  jsonSchema: LegoJsonSchema;
   ref?: ($ref: any) => void;
   popupContainer?: () => JSX.Element;
-  submitComp?: JSX.Element;
-  uiSchema: LegoUiSchema;
-  widgets?: { [name: string]: Widget };
 
   onChange?: (formData: object) => void;
   onError?: () => void;
@@ -135,7 +139,6 @@ export class LegoForm extends React.PureComponent<LegoFormProps, LegoFormState> 
       disabled = false,
       labelType = 'inline',
       labelAlign = 'left',
-      readOnly = false,
       noLabel = false
     } = this.props;
 
@@ -148,8 +151,7 @@ export class LegoForm extends React.PureComponent<LegoFormProps, LegoFormState> 
           [`${prefix}-container`]: true,
 
           [`${prefix}-disabled`]: disabled,
-          [`${prefix}-read-only`]: readOnly,
-          [`${prefix}-no-label`]: noLabel
+          [`${prefix}-noLabel`]: noLabel
         })}
       >
         <Form

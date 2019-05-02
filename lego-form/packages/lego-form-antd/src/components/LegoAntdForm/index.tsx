@@ -31,6 +31,9 @@ export function LegoAntdForm({
   fields,
   formData = {},
   widgets = {},
+  fieldTemplate,
+  arrayFieldTemplate,
+  objectFieldTemplate,
 
   ...otherProps
 }: LegoAntdFormProps) {
@@ -54,6 +57,9 @@ export function LegoAntdForm({
     >
       <LegoForm
         {...otherProps}
+        fieldTemplate={fieldTemplate}
+        arrayFieldTemplate={arrayFieldTemplate}
+        objectFieldTemplate={objectFieldTemplate}
         formData={formData}
         fields={finalFields}
         widgets={finalWidgets}
