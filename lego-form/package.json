@@ -82,5 +82,9 @@
     "webpack-dashboard": "3.0.0",
     "webpack-dev-server": "^3.2.1",
     "workerize-loader": "^1.0.4"
+  },
+  "dependencies": {
+    "lego-form-antd": "0.0.3",
+    "lego-form-core": "0.0.3"
   }
 }

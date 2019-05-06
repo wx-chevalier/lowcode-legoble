@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as smoothscroll from 'smoothscroll-polyfill';
 
-import './index.less';
+import './index.css';
 import Input from './Input';
 import Arrays from './Arrays';
 import Select from './Select';

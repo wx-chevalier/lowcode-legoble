@@ -1,4 +1,4 @@
-import { JSONSchema6 } from 'json-schema';
+import { JSONSchema6, JSONSchema6TypeName } from 'json-schema';
 import { UiSchema } from 'react-jsonschema-form';
 
 export type EnumOption =
@@ -15,6 +15,7 @@ export interface LegoMetaSchema {}
 /** 自定义的 JsonSchema */
 export interface LegoJsonSchema extends JSONSchema6 {
   /** Override origin schema definition */
+  type?: JSONSchema6TypeName | JSONSchema6TypeName[];
   enum?: EnumOption;
   properties?: {
     [k: string]: LegoJsonSchema;

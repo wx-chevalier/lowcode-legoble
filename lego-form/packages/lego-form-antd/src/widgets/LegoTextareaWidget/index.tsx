@@ -2,7 +2,7 @@ import { Input } from 'antd';
 
 import * as React from 'react';
 
-import './index.less';
+import './index.css';
 import { LegoWidget, LegoWidgetProps } from '../LegoWidget';
 import { filterJsonSchemaOptions } from '../../types/filter';
 

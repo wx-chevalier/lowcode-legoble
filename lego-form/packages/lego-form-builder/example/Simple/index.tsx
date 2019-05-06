@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LegoJsonSchema } from 'lego-form-core';
+import { LegoJsonSchema } from 'lego-form-antd';
 
 import { LegoFormBuilder } from '../../src/components/LegoFormBuilder';
 

@@ -7,7 +7,7 @@
     "react"
   ],
   "name": "lego-form-antd",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/wxyyxc1992/Legoble"
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "antd": "^3.16.6",
-    "lego-form-core": "^0.0.2",
+    "lego-form-core": "^0.0.4",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
