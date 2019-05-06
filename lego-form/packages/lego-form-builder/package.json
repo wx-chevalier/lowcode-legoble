@@ -41,7 +41,7 @@
     "immer": "^3.1.1",
     "jsoneditor": "^5.32.5",
     "jsoneditor-react": "^1.0.0",
-    "lego-form-antd": "0.0.4",
+    "lego-form-antd": "0.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

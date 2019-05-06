@@ -4,7 +4,7 @@ import * as React from 'react';
 import './index.css';
 import { LegoWidget, LegoWidgetProps } from '../LegoWidget';
 import { filterJsonSchemaOptions } from '../../types/filter';
-import { isValidArray } from 'lego-form-antd/src/types/validator';
+import { isValidArray } from '../../types/validator';
 
 const { Option } = Select;
 const prefix = 'lego-multiple-select-widget';
