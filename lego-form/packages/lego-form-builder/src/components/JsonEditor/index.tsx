@@ -3,7 +3,7 @@ import * as React from 'react';
 import JSONEditor from 'jsoneditor/dist/jsoneditor-minimalist';
 import 'jsoneditor/dist/jsoneditor.css';
 
-import './index.less';
+import './index.css';
 
 /**
  * @typedef {{

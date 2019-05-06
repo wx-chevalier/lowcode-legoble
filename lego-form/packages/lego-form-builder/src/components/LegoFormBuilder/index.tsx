@@ -8,13 +8,13 @@ import {
   LegoJsonSchema,
   LegoUiSchema,
   LegoFormSchema
-} from 'lego-form-antd/dist/cjs/index.js';
+} from 'lego-form-antd';
 import * as React from 'react';
 
 import 'antd/dist/antd.less';
 import 'jsoneditor-react/es/editor.min.css';
 
-import './index.less';
+import './index.css';
 import { MaterialsType, mapTypeToInitialConfig } from '../../materials';
 import { randomString } from '../../utils/ds';
 import JsonEditor from '../JsonEditor';
@@ -80,7 +80,7 @@ export function LegoFormBuilderComp({
 
     const { initJsonSchema, initUiSchema } = res;
 
-    const nextJsonSchema = produce(jsonSchema, draftJsonSchema => {
+    const nextJsonSchema = produce(jsonSchema, (draftJsonSchema: LegoJsonSchema) => {
       if (!draftJsonSchema.properties) {
         draftJsonSchema.properties = {};
       }
@@ -88,7 +88,7 @@ export function LegoFormBuilderComp({
       draftJsonSchema.properties[fieldName] = initJsonSchema;
     });
 
-    const nextUiSchema = produce(uiSchema, draftUiSchema => {
+    const nextUiSchema = produce(uiSchema, (draftUiSchema: LegoUiSchema) => {
       draftUiSchema[fieldName] = initUiSchema;
     });
 
