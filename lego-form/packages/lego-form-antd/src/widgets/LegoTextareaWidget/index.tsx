@@ -10,7 +10,7 @@ const { TextArea } = Input;
 
 export interface LegoTextareaWidgetProps extends LegoWidgetProps {}
 
-const prefix = 'lego-input-widget';
+const prefix = 'lego-textarea-widget';
 
 export const LegoTextareaWidget = (props: LegoTextareaWidgetProps) => {
   const {

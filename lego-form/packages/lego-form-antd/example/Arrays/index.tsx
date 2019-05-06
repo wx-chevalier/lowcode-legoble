@@ -4,8 +4,6 @@ import { LegoJsonSchema } from 'lego-form-core';
 import { LegoAntdForm } from '../../src/components/LegoAntdForm';
 
 const jsonSchema: LegoJsonSchema = {
-  title: 'Arrays form',
-  description: 'A simple form example.',
   type: 'object',
   required: ['firstName', 'lastName'],
   properties: {

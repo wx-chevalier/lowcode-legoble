@@ -7,7 +7,7 @@
     "react"
   ],
   "name": "lego-form-antd",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/wxyyxc1992/Legoble"
@@ -32,10 +32,12 @@
     "build:umd": "NODE_ENV=production webpack --config ./scripts/webpack/webpack.config.umd.js",
     "copy": "copyfiles -u 1 './src/**/*.less' dist/cjs/",
     "dev": "webpack-dev-server --config ./scripts/webpack/webpack.config.dev.js --hot",
+    "pub": "npm run build && npm publish",
     "start": "npm run dev"
   },
   "dependencies": {
     "antd": "^3.16.6",
+    "lego-form-core": "^0.0.1-alpha.4",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -67,7 +69,6 @@
     "jest": "24.7.1",
     "jest-cli": "24.7.1",
     "json-server": "0.14.2",
-    "lego-form-core": "^0.0.1-alpha.1",
     "lerna": "^3.13.4",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",

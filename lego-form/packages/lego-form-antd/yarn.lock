@@ -6567,10 +6567,10 @@ left-pad@^1.3.0:
   resolved "https://registry.npm.taobao.org/left-pad/download/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
   integrity sha1-W4o6d2Xf4AEmHd6RVYnngvjJTR4=
 
-lego-form-core@^0.0.1-alpha.1:
-  version "0.0.1-alpha.1"
-  resolved "https://registry.npm.taobao.org/lego-form-core/download/lego-form-core-0.0.1-alpha.1.tgz#8681d5d7247d2b0bbba59531fb69dfaea9ed95f3"
-  integrity sha1-hoHV1yR9Kwu7pZUx+2nfrqntlfM=
+lego-form-core@^0.0.1-alpha.4:
+  version "0.0.1-alpha.4"
+  resolved "https://registry.npm.taobao.org/lego-form-core/download/lego-form-core-0.0.1-alpha.4.tgz#c150e8bff40d829c83474d04902481e474e2003a"
+  integrity sha1-wVDov/QNgpyDR00EkCSB5HTiADo=
   dependencies:
     antd "^3.16.6"
     prop-types "^15.7.2"

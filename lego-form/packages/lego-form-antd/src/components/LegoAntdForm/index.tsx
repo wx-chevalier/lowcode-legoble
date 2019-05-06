@@ -11,6 +11,8 @@ import { LegoSingleSelectWidget } from '../../widgets/LegoSingleSelectWidget';
 import { LegoMultipleSelectWidget } from '../../widgets/LegoMultipleSelectWidget/index';
 import { LegoTextareaWidget } from '../../widgets/LegoTextareaWidget';
 import { LegoDatePicker } from '../../widgets/LegoDatePicker/index';
+import { LegoFieldTemplate } from '../LegoFieldTemplate';
+import { LegoArrayFieldTemplate } from '../LegoArrayFieldTemplate/index';
 
 const customWidgets = {
   DateWidget: LegoDatePicker,
@@ -57,8 +59,8 @@ export function LegoAntdForm({
     >
       <LegoForm
         {...otherProps}
-        fieldTemplate={fieldTemplate}
-        arrayFieldTemplate={arrayFieldTemplate}
+        fieldTemplate={fieldTemplate || LegoFieldTemplate}
+        arrayFieldTemplate={arrayFieldTemplate || LegoArrayFieldTemplate}
         objectFieldTemplate={objectFieldTemplate}
         formData={formData}
         fields={finalFields}

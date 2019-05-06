@@ -1,6 +1,13 @@
 import cn from 'classnames';
 import * as React from 'react';
-import Form, { Widget, Field, IChangeEvent } from 'react-jsonschema-form';
+import Form, {
+  Widget,
+  Field,
+  IChangeEvent,
+  ArrayFieldTemplateProps,
+  FieldTemplateProps,
+  ObjectFieldTemplateProps
+} from 'react-jsonschema-form';
 
 import './index.less';
 import { LegoJsonSchema, LegoUiSchema } from '../../types/schema';
@@ -10,6 +17,15 @@ import { mergeFormDataWithDefault } from '../../types/getter';
 export interface LegoFormOptions {
   // 对齐位置
   alignType?: 'vertical' | 'inline';
+  // 元素布局
+  formItemLayout?: {
+    labelCol: {
+      span: number;
+    };
+    wrapperCol: {
+      span: number;
+    };
+  };
   // 是否禁用
   disabled?: boolean;
   // 标签类型
@@ -18,17 +34,22 @@ export interface LegoFormOptions {
   labelAlign?: 'left' | 'right';
   // 是否不显示标签
   noLabel?: boolean;
+  // 容器
+  popupContainer?: () => JSX.Element;
+  itemNumberInRow?: number;
 }
 
 export interface LegoFormRef {
   [key: string]: () => void;
 }
 
+export interface LegoFormContext extends Partial<LegoFormOptions> {}
+
 export interface LegoFormProps extends LegoFormOptions {
   // schema & template
-  fieldTemplate?: object;
-  arrayFieldTemplate?: object;
-  objectFieldTemplate?: object;
+  fieldTemplate?: React.FunctionComponent<FieldTemplateProps>;
+  arrayFieldTemplate?: React.FunctionComponent<ArrayFieldTemplateProps>;
+  objectFieldTemplate?: React.FunctionComponent<ObjectFieldTemplateProps>;
   jsonSchema: LegoJsonSchema;
   uiSchema: LegoUiSchema;
   submitComp?: JSX.Element;
@@ -38,10 +59,9 @@ export interface LegoFormProps extends LegoFormOptions {
   // jsx
   className?: string;
   children?: JSX.Element;
-  formContext?: object;
+  formContext?: LegoFormContext;
   formData?: object;
   ref?: ($ref: any) => void;
-  popupContainer?: () => JSX.Element;
 
   onChange?: (formData: object) => void;
   onError?: () => void;
@@ -126,13 +146,18 @@ export class LegoForm extends React.PureComponent<LegoFormProps, LegoFormState> 
     const {
       className,
       children,
-      fields,
       formContext,
+
+      // schema & template
+      fields,
       jsonSchema,
       popupContainer,
       submitComp,
       uiSchema,
       widgets,
+      fieldTemplate,
+      arrayFieldTemplate,
+      objectFieldTemplate,
 
       // Options
       alignType = 'inline',
@@ -158,6 +183,9 @@ export class LegoForm extends React.PureComponent<LegoFormProps, LegoFormState> 
           formContext={{ ...formContext, alignType, labelAlign, labelType, popupContainer }}
           formData={formData}
           fields={fields}
+          FieldTemplate={fieldTemplate}
+          ArrayFieldTemplate={arrayFieldTemplate}
+          ObjectFieldTemplate={objectFieldTemplate}
           noHtml5Validate={true}
           noValidate={true}
           schema={jsonSchema}

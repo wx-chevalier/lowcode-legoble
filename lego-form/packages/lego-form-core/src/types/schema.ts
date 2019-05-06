@@ -1,17 +1,21 @@
 import { JSONSchema6 } from 'json-schema';
 import { UiSchema } from 'react-jsonschema-form';
 
+export type EnumOption =
+  | string[]
+  | number[]
+  | {
+      label: string;
+      value: string | number | undefined;
+    }[]
+  | undefined;
+
+export interface LegoMetaSchema {}
+
 /** 自定义的 JsonSchema */
 export interface LegoJsonSchema extends JSONSchema6 {
   /** Override origin schema definition */
-  enum?:
-    | string[]
-    | number[]
-    | {
-        label: string;
-        value: string | number | undefined;
-      }[]
-    | undefined;
+  enum?: EnumOption;
   properties?: {
     [k: string]: LegoJsonSchema;
   };
@@ -30,8 +34,9 @@ export interface LegoUiSchema extends UiSchema {
   items?: LegoUiSchema[];
 }
 
-export interface LegoSchema {
+export interface LegoFormSchema {
   formCode?: string;
+  metaSchema: LegoMetaSchema;
   jsonSchema: LegoJsonSchema;
   uiSchame: UiSchema;
 }

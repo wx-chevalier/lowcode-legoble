@@ -4,8 +4,6 @@ import { LegoJsonSchema } from 'lego-form-core';
 import { LegoFormBuilder } from '../../src/components/LegoFormBuilder';
 
 const jsonSchema: LegoJsonSchema = {
-  title: 'A registration form',
-  description: 'A simple form example.',
   type: 'object',
   required: ['firstName', 'lastName'],
   properties: {

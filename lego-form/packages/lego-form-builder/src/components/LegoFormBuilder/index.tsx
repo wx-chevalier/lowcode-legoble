@@ -1,11 +1,9 @@
-import * as Ajv from 'ajv';
 import { Switch, Divider, Radio, Input, Icon, Drawer } from 'antd';
-
+import * as Ajv from 'ajv';
 import cn from 'classnames';
 import produce from 'immer';
-import * as React from 'react';
-
 import { LegoAntdForm, LegoAntdFormProps, LegoJsonSchema, LegoUiSchema } from 'lego-form-antd';
+import * as React from 'react';
 
 import 'antd/dist/antd.less';
 import 'jsoneditor-react/es/editor.min.css';
@@ -113,7 +111,7 @@ export function LegoFormBuilderComp({
             <div
               className={`${prefix}-materials-item`}
               onClick={() => {
-                setDrawerVisible(true);
+                handleMaterialAdd('SingleSelect');
               }}
             >
               单选

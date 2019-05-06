@@ -27,11 +27,17 @@ export const LegoSingleSelectWidget = (props: LegoSingleSelectWidgetProps) => {
 
   const otherOptions = filterJsonSchemaOptions(options);
 
-  let { enumOptions = [] } = options;
+  let enumOptions: {
+    label: string;
+    value: string | number | undefined;
+  }[] = [];
 
   if (schema.enum && isValidArray(schema.enum)) {
     if (typeof schema.enum[0] === 'object') {
-      enumOptions = schema.enum as any;
+      enumOptions = schema.enum as {
+        label: string;
+        value: string | number | undefined;
+      }[];
     } else {
       enumOptions = (schema.enum as string[]).map(e => ({
         label: e,

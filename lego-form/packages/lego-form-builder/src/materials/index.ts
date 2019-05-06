@@ -7,20 +7,26 @@ export function mapTypeToInitialConfig(
   type: MaterialsType
 ): {
   initJsonSchema: LegoJsonSchema;
-  initUiSchema: LegoUiSchema;
-} | null {
-  if (type === 'Input') {
-    return {
-      initJsonSchema: {
-        type: 'string' as JSONSchema6TypeName,
-        title: 'default title',
-        default: 'default value '
-      },
-      initUiSchema: {
-        'ui:widget': 'text'
-      }
-    };
-  }
+  initUiSchema?: LegoUiSchema;
+} {
+  switch (type) {
+    case 'Input':
+      return {
+        initJsonSchema: {
+          type: 'string' as JSONSchema6TypeName,
+          title: 'default title',
+          default: 'default value '
+        },
+        initUiSchema: {
+          'ui:widget': 'text'
+        }
+      };
 
-  return null;
+    default:
+      return {
+        initJsonSchema: {
+          type: 'string' as JSONSchema6TypeName
+        }
+      };
+  }
 }

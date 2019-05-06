@@ -14,11 +14,6 @@ export interface ValidateResult {
 // 在 ui:options 中自定义的数据
 export interface LegoWidgetOptions {
   // field options
-
-  enumOptions: {
-    label: string;
-    value: string | number | undefined;
-  }[];
   placeholder: string;
 
   // view options
@@ -32,6 +27,8 @@ export interface LegoWidgetOptions {
   _errorType: string;
 }
 
+const prefix = 'lego-form-widget';
+
 export interface LegoWidgetProps extends WidgetProps {
   children?: JSX.Element;
 
@@ -40,7 +37,7 @@ export interface LegoWidgetProps extends WidgetProps {
 }
 
 export const LegoWidget = ({ options, children }: LegoWidgetProps) => {
-  const { _errorType, validate } = options;
+  const { _errorType = '', validate } = options;
 
   // 提取出错误信息
   const errorMessage = filterValidateMessage(_errorType, validate);
@@ -48,8 +45,8 @@ export const LegoWidget = ({ options, children }: LegoWidgetProps) => {
   return (
     <section
       className={cn({
-        'lego-form-widget': true,
-        'lego-form-widget-has-error': _errorType !== ''
+        [prefix]: true,
+        [`${prefix}--has-error`]: _errorType !== ''
       })}
     >
       {children}
