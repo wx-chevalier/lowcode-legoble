@@ -8,7 +8,7 @@ import {
   LegoJsonSchema,
   LegoUiSchema,
   LegoFormSchema
-} from 'lego-form-antd';
+} from 'lego-form-antd/dist/cjs/index.js';
 import * as React from 'react';
 
 import 'antd/dist/antd.less';

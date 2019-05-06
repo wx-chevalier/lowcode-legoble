@@ -5,7 +5,7 @@ import { LegoForm, LegoFormProps } from 'lego-form-core';
 
 import 'antd/dist/antd.less';
 
-import './index.less';
+import './index.css';
 import { LegoInputWidget } from '../../widgets/LegoInputWidget';
 import { LegoSingleSelectWidget } from '../../widgets/LegoSingleSelectWidget';
 import { LegoMultipleSelectWidget } from '../../widgets/LegoMultipleSelectWidget/index';

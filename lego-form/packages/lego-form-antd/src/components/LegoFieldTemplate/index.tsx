@@ -4,7 +4,7 @@ import * as React from 'react';
 import { FieldTemplateProps } from 'react-jsonschema-form';
 import { LegoFormContext } from 'lego-form-core';
 
-import './index.less';
+import './index.css';
 
 const prefix = 'lego-field';
 const idPrefix = 'root';

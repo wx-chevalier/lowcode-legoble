@@ -1,0 +1,20 @@
+.lego-antd-form legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.lego-antd-form .field-description {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.lego-antd-form fieldset {
+  border: 0 !important; /* 浏览器原生fieldset都附带1px的border，xform这里不需要，统一去除掉 */
+}

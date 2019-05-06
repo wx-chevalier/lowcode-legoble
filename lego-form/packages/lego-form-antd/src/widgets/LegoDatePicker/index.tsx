@@ -2,7 +2,7 @@ import { DatePicker } from 'antd';
 import * as React from 'react';
 import * as moment from 'moment';
 
-import './index.less';
+import './index.css';
 import { LegoWidget, LegoWidgetProps } from '../LegoWidget';
 import { filterJsonSchemaOptions } from '../../types/filter';
 

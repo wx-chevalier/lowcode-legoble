@@ -6,7 +6,7 @@ import { ArrayFieldTemplateProps } from 'react-jsonschema-form';
 import { LegoWidgetOptions } from '../../widgets/LegoWidget/index';
 import { filterValidateMessage } from '../../types/filter';
 
-import './index.less';
+import './index.css';
 
 const prefix = 'lego-array-field';
 

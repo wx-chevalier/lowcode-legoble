@@ -9,7 +9,6 @@ import Form, {
   ObjectFieldTemplateProps
 } from 'react-jsonschema-form';
 
-import './index.less';
 import { LegoJsonSchema, LegoUiSchema } from '../../types/schema';
 import { compare } from '../../types/validator';
 import { mergeFormDataWithDefault } from '../../types/getter';
