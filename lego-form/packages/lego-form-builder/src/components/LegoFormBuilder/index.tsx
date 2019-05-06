@@ -2,7 +2,13 @@ import { Switch, Divider, Radio, Input, Icon, Drawer } from 'antd';
 import * as Ajv from 'ajv';
 import cn from 'classnames';
 import produce from 'immer';
-import { LegoAntdForm, LegoAntdFormProps, LegoJsonSchema, LegoUiSchema } from 'lego-form-antd';
+import {
+  LegoAntdForm,
+  LegoAntdFormProps,
+  LegoJsonSchema,
+  LegoUiSchema,
+  LegoFormSchema
+} from 'lego-form-antd';
 import * as React from 'react';
 
 import 'antd/dist/antd.less';
@@ -19,16 +25,27 @@ const ajv = new Ajv({ allErrors: true, verbose: true });
 
 const prefix = 'lego-form-builder';
 
-export interface LegoFormBuilderProps extends LegoAntdFormProps {}
+export interface LegoFormBuilderProps extends Partial<LegoAntdFormProps> {
+  formSchema: string | LegoFormSchema;
+  onFormSchemaChange?: (formSchema: LegoFormSchema) => void;
+}
 
 export function LegoFormBuilderComp({
   className,
-  jsonSchema: parentJsonSchema,
-  uiSchema: parentUiSchema,
+  formSchema: parentFormSchema,
+  onFormSchemaChange = () => {},
   ...otherProps
 }: LegoFormBuilderProps) {
   const [state, dispatch] = useFormSchema();
   const { editorMode } = state;
+
+  let formSchema: LegoFormSchema | string = parentFormSchema;
+
+  if (typeof formSchema === 'string') {
+    formSchema = JSON.parse(formSchema);
+  }
+
+  const { jsonSchema: parentJsonSchema, uiSchema: parentUiSchema } = formSchema as LegoFormSchema;
 
   const [platform, setPlatform] = React.useState('pc');
   const [isPreview, togglePreview] = React.useState(false);
@@ -39,10 +56,18 @@ export function LegoFormBuilderComp({
 
   const handleJsonSchemaChange = (v: LegoJsonSchema) => {
     setJsonSchema(v);
+    onFormSchemaChange({
+      jsonSchema: v,
+      uiSchema
+    });
   };
 
   const handleUiSchemaChange = (v: LegoUiSchema) => {
     setUiSchema(v);
+    onFormSchemaChange({
+      jsonSchema,
+      uiSchema: v
+    });
   };
 
   const handleMaterialAdd = (type: MaterialsType) => {
@@ -80,7 +105,7 @@ export function LegoFormBuilderComp({
     >
       <div className={`${prefix}-materials-wrapper`}>
         <div className={`${prefix}-toolbar ${prefix}-materials-toolbar`}>
-          <Input disabled={true} value="匿名表单" style={{ marginRight: 8 }} />
+          <Input disabled={true} value="Anonymous Form" style={{ marginRight: 8 }} />
           <Icon type="edit" style={{ marginRight: 8 }} />
           <RadioGroup
             value={platform}
@@ -97,7 +122,7 @@ export function LegoFormBuilderComp({
           </RadioGroup>
         </div>
         <div className={`${prefix}-materials`}>
-          <div className="title">物料</div>
+          <div className="title">Materials</div>
           <Divider style={{ margin: 0 }} />
           <div className={`${prefix}-materials-gallery`}>
             <div
@@ -106,7 +131,7 @@ export function LegoFormBuilderComp({
                 handleMaterialAdd('Input');
               }}
             >
-              单行文本框
+              Input
             </div>
             <div
               className={`${prefix}-materials-item`}
@@ -114,10 +139,16 @@ export function LegoFormBuilderComp({
                 handleMaterialAdd('SingleSelect');
               }}
             >
-              单选
+              Single Select
             </div>
-            <div className={`${prefix}-materials-item`}>日期选择器</div>
-            <div className={`${prefix}-materials-item`}>时间选择器</div>
+            <div
+              className={`${prefix}-materials-item`}
+              onClick={() => {
+                handleMaterialAdd('Date');
+              }}
+            >
+              Date Picker
+            </div>
           </div>
         </div>
       </div>
@@ -136,9 +167,9 @@ export function LegoFormBuilderComp({
                   });
                 }}
               >
-                <RadioButton value="jsonEditor">JSON 编辑</RadioButton>
+                <RadioButton value="jsonEditor">JSON Editor</RadioButton>
                 <RadioButton disabled={true} value="visualEditor">
-                  可视化编辑
+                  Visual Editor
                 </RadioButton>
               </RadioGroup>
             )}
@@ -146,8 +177,8 @@ export function LegoFormBuilderComp({
           <div className="right">
             <Switch
               checked={isPreview}
-              checkedChildren="编辑"
-              unCheckedChildren="预览"
+              checkedChildren="Edit"
+              unCheckedChildren="Preview"
               onChange={(c: boolean) => {
                 togglePreview(c);
               }}

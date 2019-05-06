@@ -36,7 +36,7 @@ export interface LegoUiSchema extends UiSchema {
 
 export interface LegoFormSchema {
   formCode?: string;
-  metaSchema: LegoMetaSchema;
+  metaSchema?: LegoMetaSchema;
   jsonSchema: LegoJsonSchema;
-  uiSchame: UiSchema;
+  uiSchema: LegoUiSchema;
 }

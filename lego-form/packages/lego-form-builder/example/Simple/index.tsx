@@ -71,13 +71,5 @@ const uiSchema = {
 };
 
 export default function Simple() {
-  return (
-    <LegoFormBuilder
-      jsonSchema={jsonSchema}
-      uiSchema={uiSchema}
-      onSubmit={data => {
-        console.log(data);
-      }}
-    />
-  );
+  return <LegoFormBuilder formSchema={{ jsonSchema, uiSchema }} />;
 }
