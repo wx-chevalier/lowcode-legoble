@@ -44,7 +44,14 @@ export function LegoFormBuilderComp({
     formSchema = JSON.parse(formSchema);
   }
 
-  const { jsonSchema: parentJsonSchema, uiSchema: parentUiSchema } = formSchema as LegoFormSchema;
+  const {
+    jsonSchema: parentJsonSchema = {
+      type: 'object',
+      required: [],
+      properties: {}
+    } as LegoJsonSchema,
+    uiSchema: parentUiSchema = {}
+  } = formSchema as LegoFormSchema;
 
   const [platform, setPlatform] = React.useState('pc');
   const [isPreview, togglePreview] = React.useState(false);
@@ -93,6 +100,11 @@ export function LegoFormBuilderComp({
 
     setJsonSchema(nextJsonSchema);
     setUiSchema(nextUiSchema);
+
+    onFormSchemaChange({
+      jsonSchema: nextJsonSchema,
+      uiSchema: nextUiSchema
+    });
   };
 
   return (

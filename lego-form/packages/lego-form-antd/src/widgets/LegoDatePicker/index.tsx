@@ -47,3 +47,5 @@ export const LegoDatePicker = (props: LegoDatePickerProps) => {
     </LegoWidget>
   );
 };
+
+LegoDatePicker.displayName = 'LegoDatePicker';

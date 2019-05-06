@@ -2,6 +2,8 @@
 
 [lego-form](https://github.com/wx-chevalier/Legoble/tree/master/lego-form) is a dynamic form solution with visually configuration, built on [json-schema-form](). It supports multiple widgets styled with antd, flexible event/trigger system and also a part of [Legoble](https://github.com/wx-chevalier/Legoble).
 
+Try it in [Online Demo](https://stackblitz.com/edit/lego-form).
+
 ---
 
 lego-form 是动态表单解决方案，借鉴了著名的 [json-schema-form]()，其设计与理论归纳在了 [Web 开发中的工程实践 https://url.wx-coder.cn/jXxlM ](https://url.wx-coder.cn/jXxlM)系列文章中。
@@ -16,7 +18,6 @@ lego-form 是动态表单解决方案，借鉴了著名的 [json-schema-form]()�
 
 ```sh
 $ npm run pub
-
 ```
 
 ## bootStrap

@@ -54,3 +54,5 @@ export const LegoWidget = ({ options, children }: LegoWidgetProps) => {
     </section>
   );
 };
+
+LegoWidget.displayName = 'LegoWidget';
