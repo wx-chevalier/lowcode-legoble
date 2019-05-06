@@ -43,7 +43,7 @@ export function LegoAntdForm({
 
   const defaultSubmitComp = (
     <Button className={`${prefix}-submit-comp`} type="primary" htmlType="submit">
-      提交
+      Submit
     </Button>
   );
 
