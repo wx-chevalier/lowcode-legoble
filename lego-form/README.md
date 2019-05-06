@@ -16,6 +16,7 @@ lego-form 是动态表单解决方案，借鉴了著名的 [json-schema-form]()�
 
 ```sh
 $ npm run pub
+
 ```
 
 ## bootStrap
