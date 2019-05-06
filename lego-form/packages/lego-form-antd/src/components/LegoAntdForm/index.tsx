@@ -3,8 +3,6 @@ import cn from 'classnames';
 import * as React from 'react';
 import { LegoForm, LegoFormProps } from 'lego-form-core';
 
-import 'antd/dist/antd.less';
-
 import './index.css';
 import { LegoInputWidget } from '../../widgets/LegoInputWidget';
 import { LegoSingleSelectWidget } from '../../widgets/LegoSingleSelectWidget';

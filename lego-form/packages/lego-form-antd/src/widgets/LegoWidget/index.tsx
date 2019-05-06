@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import * as React from 'react';
 import { WidgetProps } from 'react-jsonschema-form';
+import { LegoJsonSchema } from 'lego-form-core';
 
 import './index.css';
 import { filterValidateMessage } from '../../types/filter';
-import { LegoJsonSchema } from 'lego-form-core';
 
 export interface ValidateResult {
   type: string;

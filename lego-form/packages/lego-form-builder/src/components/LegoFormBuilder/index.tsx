@@ -11,7 +11,6 @@ import {
 } from 'lego-form-antd';
 import * as React from 'react';
 
-import 'antd/dist/antd.less';
 import 'jsoneditor-react/es/editor.min.css';
 
 import './index.css';

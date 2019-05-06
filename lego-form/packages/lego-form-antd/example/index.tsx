@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as smoothscroll from 'smoothscroll-polyfill';
+import 'antd/dist/antd.less';
 
 import './index.css';
 import Input from './Input';
