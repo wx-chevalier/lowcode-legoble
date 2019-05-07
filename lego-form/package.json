@@ -34,7 +34,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.(ts|tsx)'",
     "precommit": "lint-staged",
     "prettier-all": "prettier --write 'src/**/*' '!src/{assets,datas}/**'",
-    "pub": "npm run build && lerna publish",
+    "pub": "npm run build && lerna publish --force-publish=*",
     "start": "webpack-dashboard -- npm run dev",
     "test": "jest --config ./scripts/jest/jest.config.js",
     "test:watch": "npm test -- --watch",
