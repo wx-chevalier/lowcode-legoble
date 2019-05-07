@@ -7,7 +7,7 @@
     "react"
   ],
   "name": "lego-form-builder",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/wxyyxc1992/Legoble"
@@ -41,7 +41,7 @@
     "immer": "^3.1.1",
     "jsoneditor": "^5.32.5",
     "jsoneditor-react": "^1.0.0",
-    "lego-form-antd": "^0.0.6",
+    "lego-form-antd": "^0.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
