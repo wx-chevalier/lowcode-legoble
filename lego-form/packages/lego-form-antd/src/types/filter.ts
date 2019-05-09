@@ -8,6 +8,7 @@ export function filterJsonSchemaOptions(options: object) {
     'disabled',
     'emptyValue',
     'enum',
+    'enumOptions',
     'help',
     'inputType',
     'placeholder',

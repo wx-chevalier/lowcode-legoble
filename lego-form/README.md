@@ -1,6 +1,6 @@
 # lego-form
 
-[lego-form](https://github.com/wx-chevalier/Legoble/tree/master/lego-form) is a dynamic form solution with visually configuration, built on [json-schema-form](). It supports multiple widgets styled with antd, flexible event/trigger system and also a part of [Legoble](https://github.com/wx-chevalier/Legoble).
+[lego-form](https://github.com/wx-chevalier/Legoble/tree/master/lego-form) is a dynamic form solution with visually configuration, built on [json-schema-form](https://github.com/mozilla-services/react-jsonschema-form). It supports multiple widgets styled with antd, flexible event/trigger system and also a part of [Legoble](https://github.com/wx-chevalier/Legoble).
 
 Try it in [Online Demo](https://stackblitz.com/edit/lego-form).
 
@@ -84,10 +84,13 @@ const widgetMap = {
 
 ## Roadmap
 
+- 补齐组件
+- 完善数据校验的功能
+- 使用 Hooks 优化现有的代码状态管理
 - 可视化拖拽
 - 动态布局
 - 条件触发器
-- 补齐组件
+- 添加国际化支持
 
 ## Motivation & Credits
 

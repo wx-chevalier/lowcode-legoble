@@ -4,6 +4,8 @@ import { LegoJsonSchema } from 'lego-form-antd';
 import { LegoFormBuilder } from '../../src/components/LegoFormBuilder';
 
 const jsonSchema: LegoJsonSchema = {
+  title: 'Form title',
+  description: 'Form desc',
   type: 'object',
   required: ['firstName', 'lastName'],
   properties: {

@@ -33,6 +33,8 @@ export interface LegoFormOptions {
   labelAlign?: 'left' | 'right';
   // 是否不显示标签
   noLabel?: boolean;
+  // 是否不展示标题
+  noTitle?: boolean;
   // 容器
   popupContainer?: () => JSX.Element;
   itemNumberInRow?: number;
@@ -79,7 +81,9 @@ export class LegoForm extends React.PureComponent<LegoFormProps, LegoFormState> 
   static defaultProps = {
     formContext: {},
     formData: {},
-    widgets: {}
+    widgets: {},
+
+    noTitle: false
   };
 
   state = { isDirty: false, formData: this.props.formData || {} };
