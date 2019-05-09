@@ -79,3 +79,22 @@ const widgetMap = {
   }
 };
 ```
+
+# About
+
+## Roadmap
+
+- 可视化拖拽
+- 动态布局
+- 条件触发器
+- 补齐组件
+
+## Motivation & Credits
+
+- [react-jsonschema-form-conditionals #Project](https://github.com/RxNT/react-jsonschema-form-conditionals)
+
+- [react-jsonschema-form-pagination](https://github.com/RxNT/react-jsonschema-form-pagination): Separation of huge schemas into navs
+
+- [react-jsonschema-form-material-ui #Project#](https://github.com/vip-git/react-jsonschema-form-material-ui): React - Material UI components for building Web forms from JSON Schema.
+
+- [react-jsonschema-form-extras](https://github.com/RxNT/react-jsonschema-form-extras): This project provides light integration over established React components, trying to keep configurations compatible with original project.

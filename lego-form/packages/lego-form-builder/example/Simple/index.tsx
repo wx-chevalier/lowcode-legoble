@@ -71,5 +71,12 @@ const uiSchema = {
 };
 
 export default function Simple() {
-  return <LegoFormBuilder formSchema={{ jsonSchema, uiSchema }} />;
+  return (
+    <LegoFormBuilder
+      formSchema={{ jsonSchema, uiSchema }}
+      onFormSchemaChange={schema => {
+        console.log(schema);
+      }}
+    />
+  );
 }
