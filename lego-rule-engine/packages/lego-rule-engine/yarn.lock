@@ -224,80 +224,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@interactjs/actions@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/actions/download/@interactjs/actions-1.4.4.tgz#fd029c66a5b82c0aa1ec95f48eab67d92bfb49f1"
-  integrity sha1-/QKcZqW4LAqh7JX0jqtn2Sv7SfE=
-
-"@interactjs/auto-scroll@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/auto-scroll/download/@interactjs/auto-scroll-1.4.4.tgz#2996670efcb1769e60dfb449d8f2e017c7e2bf10"
-  integrity sha1-KZZnDvyxdp5g37RJ2PLgF8fivxA=
-
-"@interactjs/auto-start@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/auto-start/download/@interactjs/auto-start-1.4.4.tgz#cbf9f6665f6a0df4b7ff305ce0d2fcecd0f7f803"
-  integrity sha1-y/n2Zl9qDfS3/zBc4NL87ND3+AM=
-
-"@interactjs/core@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/core/download/@interactjs/core-1.4.4.tgz#0793d5d0206aca34410ae7125d7949ac277776a9"
-  integrity sha1-B5PV0CBqyjRBCucSXXlJrCd3dqk=
-
-"@interactjs/dev-tools@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/dev-tools/download/@interactjs/dev-tools-1.4.4.tgz#3818d42048d7bf9a5a23c1be6087dd4eba76323e"
-  integrity sha1-OBjUIEjXv5paI8G+YIfdTrp2Mj4=
-  dependencies:
-    "@interactjs/utils" "1.4.4"
-
-"@interactjs/inertia@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/inertia/download/@interactjs/inertia-1.4.4.tgz#dd923c3181a340a05db983d8ced89e84207b0783"
-  integrity sha1-3ZI8MYGjQKBduYPYztiehCB7B4M=
-
-"@interactjs/interact@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/interact/download/@interactjs/interact-1.4.4.tgz#0121526a5478bdb6885e937c0d103717c62f37c0"
-  integrity sha1-ASFSalR4vbaIXpN8DRA3F8YvN8A=
-
-"@interactjs/modifiers@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/modifiers/download/@interactjs/modifiers-1.4.4.tgz#e49ebdfb6afac3ff5beda6a56070ef5f329f7cdb"
-  integrity sha1-5J69+2r6w/9b7aalYHDvXzKffNs=
-
-"@interactjs/pointer-events@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/pointer-events/download/@interactjs/pointer-events-1.4.4.tgz#42208feb9b344dd9ce10df180bd05ed2ad533992"
-  integrity sha1-QiCP65s0TdnOEN8YC9Be0q1TOZI=
-
-"@interactjs/reflow@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/reflow/download/@interactjs/reflow-1.4.4.tgz#eba8908cabb8a725b99d727793f9923d544b2eb6"
-  integrity sha1-66iQjKu4pyW5nXJ3k/mSPVRLLrY=
-
-"@interactjs/types@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/types/download/@interactjs/types-1.4.4.tgz#aedf4bd197d128a8d058e65f754698ffc9efd3ef"
-  integrity sha1-rt9L0ZfRKKjQWOZfdUaY/8nv0+8=
-  dependencies:
-    "@interactjs/actions" "1.4.4"
-    "@interactjs/auto-scroll" "1.4.4"
-    "@interactjs/auto-start" "1.4.4"
-    "@interactjs/core" "1.4.4"
-    "@interactjs/dev-tools" "1.4.4"
-    "@interactjs/inertia" "1.4.4"
-    "@interactjs/interact" "1.4.4"
-    "@interactjs/modifiers" "1.4.4"
-    "@interactjs/pointer-events" "1.4.4"
-    "@interactjs/reflow" "1.4.4"
-    "@interactjs/utils" "1.4.4"
-
-"@interactjs/utils@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/@interactjs/utils/download/@interactjs/utils-1.4.4.tgz#c927779a42022b1f4ac473581f491ba3fa22135b"
-  integrity sha1-ySd3mkICKx9KxHNYH0kbo/oiE1s=
-
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.npm.taobao.org/@jest/console/download/@jest/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
@@ -1301,11 +1227,6 @@
   resolved "https://registry.npm.taobao.org/@types/minimatch/download/@types/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
 
-"@types/mousetrap@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.npm.taobao.org/@types/mousetrap/download/@types/mousetrap-1.6.2.tgz#5f48bdbd28c8a447167263ae436488f1d8be072d"
-  integrity sha1-X0i9vSjIpEcWcmOuQ2SI8di+By0=
-
 "@types/node@*":
   version "11.11.1"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-11.11.1.tgz#9ee55ffce20f72e141863b0036a6e51c6fc09a1f"
@@ -1340,11 +1261,6 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
-
-"@types/siema@^1.4.3":
-  version "1.4.3"
-  resolved "http://registry.npm.taobao.org/@types/siema/download/@types/siema-1.4.3.tgz#62c7208d1545b5451ac0a3d868c6ee1b78d63851"
-  integrity sha1-YscgjRVFtUUawKPYaMbuG3jWOFE=
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -5877,13 +5793,6 @@ inspectpack@^4.2.1:
     semver-compare "^1.0.0"
     yargs "^11.0.0"
 
-interactjs@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.npm.taobao.org/interactjs/download/interactjs-1.4.4.tgz#8f07a07568f00719aa0e64bce3c1d31e14e42682"
-  integrity sha1-jwegdWjwBxmqDmS848HTHhTkJoI=
-  dependencies:
-    "@interactjs/types" "1.4.4"
-
 internal-ip@^4.3.0:
   version "4.3.0"
   resolved "https://registry.npm.taobao.org/internal-ip/download/internal-ip-4.3.0.tgz#845452baad9d2ca3b69c635a137acb9a0dad0907"
@@ -7725,11 +7634,6 @@ most@^1.7.3:
     "@most/prelude" "^1.4.0"
     symbol-observable "^1.0.2"
 
-mousetrap@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.npm.taobao.org/mousetrap/download/mousetrap-1.6.3.tgz#80fee49665fd478bccf072c9d46bdf1bfed3558a"
-  integrity sha1-gP7klmX9R4vM8HLJ1GvfG/7TVYo=
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8180,6 +8084,11 @@ object-hash@^1.1.4:
   version "1.3.1"
   resolved "https://registry.npmjs.org/object-hash/-/object-hash-1.3.1.tgz#fde452098a951cb145f039bb7d455449ddc126df"
   integrity sha512-OSuu/pU4ENM9kmREg0BdNrUDIl1heYa4mBZacJc+vVWz4GtAwu7jO8s4AIt2aGRUTqxykpWzI3Oqnsm13tTMDA==
+
+object-hash@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npm.taobao.org/object-hash/download/object-hash-1.3.1.tgz#fde452098a951cb145f039bb7d455449ddc126df"
+  integrity sha1-/eRSCYqVHLFF8Dm7fUVUSd3BJt8=
 
 object-inspect@^1.6.0:
   version "1.6.0"
@@ -10264,11 +10173,6 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/shellwords/download/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha1-1rkYHBpI05cyTISHHvvPxz/AZUs=
-
-siema@^1.5.1:
-  version "1.5.1"
-  resolved "http://registry.npm.taobao.org/siema/download/siema-1.5.1.tgz#eff312b77e8340fa4d81d5d053ebbeb9113ff888"
-  integrity sha1-7/MSt36DQPpNgdXQU+u+uRE/+Ig=
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"

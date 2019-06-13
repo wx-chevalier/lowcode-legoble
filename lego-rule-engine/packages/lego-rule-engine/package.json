@@ -7,12 +7,12 @@
     "react"
   ],
   "name": "lego-rule-engine",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/wx-chevalier/Legoable"
   },
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "prettier": {
     "printWidth": 100,
@@ -42,6 +42,7 @@
     "@types/debug": "^4.1.4",
     "eventemitter3": "^3.1.2",
     "lodash.isobjectlike": "^4.0.0",
+    "object-hash": "^1.3.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

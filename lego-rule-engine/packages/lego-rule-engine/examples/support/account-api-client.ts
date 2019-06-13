@@ -29,7 +29,7 @@ let accountData = {
 module.exports = {
   getAccountInformation: (accountId: string) => {
     var message = 'loading account information for "' + accountId + '"';
-
+    console.log((message as any).dim);
     return new Promise((resolve, reject) => {
       setImmediate(() => {
         resolve(accountData[accountId]);
