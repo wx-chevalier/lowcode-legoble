@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
  * This is an advanced example that demonstrates facts with dependencies
@@ -12,14 +12,14 @@
  *   DEBUG=json-rules-engine node ./examples/04-fact-dependency.js
  */
 
-require('colors')
-let Engine = require('../dist').Engine
-let accountClient = require('./support/account-api-client')
+require('colors');
+import { Engine } from '../src/engine';
+let accountClient = require('./support/account-api-client');
 
 /**
  * Setup a new engine
  */
-let engine = new Engine()
+let engine = new Engine();
 
 /**
  * Rule for identifying microsoft employees that have been terminated.
@@ -28,21 +28,24 @@ let engine = new Engine()
  */
 let microsoftRule = {
   conditions: {
-    all: [{
-      fact: 'account-information',
-      operator: 'equal',
-      value: 'microsoft',
-      path: '.company'
-    }, {
-      fact: 'account-information',
-      operator: 'equal',
-      value: 'terminated',
-      path: '.status'
-    }]
+    all: [
+      {
+        fact: 'account-information',
+        operator: 'equal',
+        value: 'microsoft',
+        path: '.company'
+      },
+      {
+        fact: 'account-information',
+        operator: 'equal',
+        value: 'terminated',
+        path: '.status'
+      }
+    ]
   },
   event: { type: 'microsoft-terminated-employees' }
-}
-engine.addRule(microsoftRule)
+};
+engine.addRule(microsoftRule);
 
 /**
  * Rule for identifying accounts older than 5 years
@@ -51,71 +54,86 @@ engine.addRule(microsoftRule)
  */
 let tenureRule = {
   conditions: {
-    all: [{
-      fact: 'employee-tenure',
-      operator: 'greaterThanInclusive',
-      value: 5,
-      params: {
-        'unit': 'years'
+    all: [
+      {
+        fact: 'employee-tenure',
+        operator: 'greaterThanInclusive',
+        value: 5,
+        params: {
+          unit: 'years'
+        }
       }
-    }]
+    ]
   },
   event: { type: 'five-year-tenure' }
-}
-engine.addRule(tenureRule)
+};
+engine.addRule(tenureRule);
 
 /**
  * Register listeners with the engine for rule success and failure
  */
-let facts
+let facts: any;
 engine
   .on('success', event => {
-    console.log(facts.accountId + ' DID '.green + 'meet conditions for the ' + event.type.underline + ' rule.')
+    console.log(
+      facts.accountId +
+        (' DID ' as any).green +
+        'meet conditions for the ' +
+        event.type.underline +
+        ' rule.'
+    );
   })
   .on('failure', event => {
-    console.log(facts.accountId + ' did ' + 'NOT'.red + ' meet conditions for the ' + event.type.underline + ' rule.')
-  })
+    console.log(
+      facts.accountId +
+        ' did ' +
+        ('NOT' as any).red +
+        ' meet conditions for the ' +
+        event.type.underline +
+        ' rule.'
+    );
+  });
 
 /**
  * 'account-information' fact executes an api call and retrieves account data
  * - Demonstrates facts called only by other facts and never mentioned directly in a rule
  */
-engine.addFact('account-information', (params, almanac) => {
-  return almanac.factValue('accountId')
-    .then(accountId => {
-      return accountClient.getAccountInformation(accountId)
-    })
-})
+engine.addFact('account-information', (params: any, almanac: any) => {
+  return almanac.factValue('accountId').then((accountId: string) => {
+    return accountClient.getAccountInformation(accountId);
+  });
+});
 
 /**
  * 'employee-tenure' fact retrieves account-information, and computes the duration of employment
  * since the account was created using 'accountInformation.createdAt'
  */
-engine.addFact('employee-tenure', (params, almanac) => {
-  return almanac.factValue('account-information')
-    .then(accountInformation => {
-      let created = new Date(accountInformation.createdAt)
-      let now = new Date()
+engine.addFact('employee-tenure', (params: any, almanac: any) => {
+  return almanac
+    .factValue('account-information')
+    .then((accountInformation: any) => {
+      let created = new Date(accountInformation.createdAt);
+      let now = new Date();
       switch (params.unit) {
         case 'years':
-          return now.getFullYear() - created.getFullYear()
+          return now.getFullYear() - created.getFullYear();
         case 'milliseconds':
         default:
-          return now.getTime() - created.getTime()
+          return now.getTime() - created.getTime();
       }
     })
-    .catch(console.log)
-})
+    .catch(console.log);
+});
 
 // define fact(s) known at runtime
-facts = { accountId: 'washington' }
+facts = { accountId: 'washington' };
 engine
-  .run(facts)  // first run, using washington's facts
+  .run(facts) // first run, using washington's facts
   .then(() => {
-    facts = { accountId: 'jefferson' }
-    return engine.run(facts) // second run, using jefferson's facts; facts & evaluation are independent of the first run
+    facts = { accountId: 'jefferson' };
+    return engine.run(facts); // second run, using jefferson's facts; facts & evaluation are independent of the first run
   })
-  .catch(console.log)
+  .catch(console.log);
 
 /*
  * OUTPUT:

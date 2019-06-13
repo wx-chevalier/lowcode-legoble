@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
  * This is a basic example demonstrating how to leverage the metadata supplied by rule results
@@ -9,70 +9,76 @@
  * For detailed output:
  *   DEBUG=json-rules-engine node ./examples/09-rule-results.js
  */
-require('colors')
-let Engine = require('../dist').Engine
+require('colors');
+import { Engine } from '../src/engine';
 
 /**
  * Setup a new engine
  */
-let engine = new Engine()
+let engine = new Engine();
 
 // rule for determining honor role student atheletes (student has GPA >= 3.5 AND is an athlete)
 engine.addRule({
   conditions: {
-    all: [{
-      fact: 'athlete',
-      operator: 'equal',
-      value: true
-    }, {
-      fact: 'GPA',
-      operator: 'greaterThanInclusive',
-      value: 3.5
-    }]
+    all: [
+      {
+        fact: 'athlete',
+        operator: 'equal',
+        value: true
+      },
+      {
+        fact: 'GPA',
+        operator: 'greaterThanInclusive',
+        value: 3.5
+      }
+    ]
   },
-  event: {  // define the event to fire when the conditions evaluate truthy
+  event: {
+    // define the event to fire when the conditions evaluate truthy
     type: 'honor-roll',
     params: {
       message: 'Student made the athletics honor-roll'
     }
   }
-})
+});
 
-function render (message, ruleResult) {
+function render(message: any, ruleResult: any) {
   // if rule succeeded, render success message
   if (ruleResult.result) {
-    return console.log(`${message}`.green)
+    return console.log((`${message}` as any).green);
   }
   // if rule failed, iterate over each failed condition to determine why the student didn't qualify for athletics honor roll
-  let detail = ruleResult.conditions.all.filter(condition => !condition.result)
-  .map(condition => {
-    switch (condition.operator) {
-      case 'equal':
-        return `was not an ${condition.fact}`
-      case 'greaterThanInclusive':
-        return `${condition.fact} of ${condition.factResult} was too low`
-    }
-  }).join(' and ')
-  console.log(`${message} ${detail}`.red)
+  let detail = ruleResult.conditions.all
+    .filter((condition: any) => !condition.result)
+    .map((condition: any) => {
+      switch (condition.operator) {
+        case 'equal':
+          return `was not an ${condition.fact}`;
+        case 'greaterThanInclusive':
+          return `${condition.fact} of ${condition.factResult} was too low`;
+      }
+    })
+    .join(' and ');
+  console.log((`${message} ${detail}` as any).red);
 }
 
 /**
  * On success, retrieve the student's username for display purposes, and render
  */
 engine.on('success', (event, almanac, ruleResult) => {
-  almanac.factValue('username').then(username => {
-    render(`${username.bold} succeeded! ${event.params.message}`, ruleResult)
-  })
-})
+  almanac.factValue('username').then((username: any) => {
+    render(`${username.bold} succeeded! ${event.params.message}`, ruleResult);
+  });
+});
 
 /**
  * On failure, retrieve the student's username for display purposes, and render
  */
 engine.on('failure', (event, almanac, ruleResult) => {
-  almanac.factValue('username').then(username => {
-    render(`${username.bold} failed - `, ruleResult)
-  })
-})
+  almanac.factValue('username').then((username: any) => {
+    render(`${username.bold} failed - `, ruleResult);
+  });
+});
 
 // Run the engine for 5 different students
 Promise.all([
@@ -81,7 +87,7 @@ Promise.all([
   engine.run({ athlete: false, GPA: 3.1, username: 'jane' }),
   engine.run({ athlete: true, GPA: 4.0, username: 'janet' }),
   engine.run({ athlete: true, GPA: 1.1, username: 'sarah' })
-])
+]);
 
 /*
  * OUTPUT:

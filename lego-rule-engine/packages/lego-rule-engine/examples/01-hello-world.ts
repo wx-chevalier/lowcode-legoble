@@ -2,14 +2,14 @@
  * This is the hello-world example from the README.
  *
  * Usage:
- *   ts-node ./examples/01-hello-world.js
+ *   ts-node ./examples/01-hello-world.ts
  *
  * For detailed output:
- *   DEBUG=json-rules-engine node ./examples/01-hello-world.js
+ *   DEBUG=json-rules-engine node ./examples/01-hello-world.ts
  */
 
-import { Rule } from './../src/rule';
-import { Engine } from './../src/engine';
+import { Rule } from '../src/rule';
+import { Engine } from '../src/engine';
 
 require('colors');
 
@@ -49,7 +49,7 @@ engine.addRule(rule);
  * Fact values do NOT need to be known at engine runtime; see the
  * 03-dynamic-facts.js example for how to pull in data asynchronously during runtime
  */
-let facts = { displayMessage: true };
+let facts = { displayMessage: false };
 
 // run the engine
 engine

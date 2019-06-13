@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    /// Works for debugging code with ts-node
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Program",
+      "args": ["${relativeFile}"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"]
+    },
+
+    /// Debugger attaches and then does nothing
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Tests",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "args": ["--config", "package.json", "--runInBand"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "console": "internalConsole"
+    }
+  ]
+}

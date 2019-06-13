@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
  * This example demonstrates using custom operators.
@@ -16,89 +16,93 @@
  *   DEBUG=json-rules-engine node ./examples/06-custom-operators.js
  */
 
-require('colors')
-let Engine = require('../dist').Engine
+require('colors');
+import { Engine } from '../src/engine';
 
 /**
  * Setup a new engine
  */
-let engine = new Engine()
+let engine = new Engine();
 
 /**
  * Define a 'startsWith' custom operator, for use in later rules
  */
 engine.addOperator('startsWith', (factValue, jsonValue) => {
-  if (!factValue.length) return false
-  return factValue[0].toLowerCase() === jsonValue.toLowerCase()
-})
+  if (!factValue.length) return false;
+  return factValue[0].toLowerCase() === jsonValue.toLowerCase();
+});
 
 /**
  * Add rule for detecting words that start with 'a'
  */
 let ruleA = {
   conditions: {
-    all: [{
-      fact: 'word',
-      operator: 'startsWith',
-      value: 'a'
-    }]
+    all: [
+      {
+        fact: 'word',
+        operator: 'startsWith',
+        value: 'a'
+      }
+    ]
   },
   event: {
     type: 'start-with-a'
   }
-}
-engine.addRule(ruleA)
+};
+engine.addRule(ruleA);
 
 /*
  * Add rule for detecting words that start with 'b'
  */
 let ruleB = {
   conditions: {
-    all: [{
-      fact: 'word',
-      operator: 'startsWith',
-      value: 'b'
-    }]
+    all: [
+      {
+        fact: 'word',
+        operator: 'startsWith',
+        value: 'b'
+      }
+    ]
   },
   event: {
     type: 'start-with-b'
   }
-}
-engine.addRule(ruleB)
+};
+engine.addRule(ruleB);
 
 // utility for printing output
 let printEventType = {
   'start-with-a': 'start with "a"',
   'start-with-b': 'start with "b"'
-}
+};
 
 /**
  * Register listeners with the engine for rule success and failure
  */
-let facts
+let facts: any;
 engine
   .on('success', event => {
-    console.log(facts.word + ' DID '.green + printEventType[event.type])
+    console.log(facts.word + (' DID ' as any).green + printEventType[event.type]);
   })
   .on('failure', event => {
-    console.log(facts.word + ' did ' + 'NOT'.red + ' ' + printEventType[event.type])
-  })
+    console.log(facts.word + ' did ' + ('NOT' as any).red + ' ' + printEventType[event.type]);
+  });
 
 /**
  * Each run() of the engine executes on an independent set of facts.  We'll run twice, once per word
  */
 facts = {
   word: 'bacon'
-}
+};
 engine
-  .run(facts)  // first run, using 'bacon'
+  .run(facts) // first run, using 'bacon'
   .then(() => {
     facts = {
       word: 'antelope'
-    }
-    return engine.run(facts) // second run, using 'antelope'
+    };
+    return engine.run(facts); // second run, using 'antelope'
   })
-  .catch(console.log)
+  .catch(console.log);
 
 /*
  * OUTPUT:

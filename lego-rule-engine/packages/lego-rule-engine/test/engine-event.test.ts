@@ -109,7 +109,7 @@ describe('Engine: event', () => {
     test('"event.type" passes the event parameters, almanac, and results', async () => {
       let failureSpy = jest.fn();
       let successSpy = jest.fn();
-      engine.on(event.type, function(params, almanac, ruleResult) {
+      engine.on(event.type, function(params: any, almanac: any, ruleResult) {
         expect(params).toEqual(event.params);
         expect(almanac).toBeInstanceOf(Almanac);
         expect(ruleResult.result).toBe(true);

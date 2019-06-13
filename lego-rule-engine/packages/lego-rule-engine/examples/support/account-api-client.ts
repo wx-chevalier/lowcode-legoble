@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-require('colors')
+require('colors');
 
 let accountData = {
   washington: {
@@ -21,19 +21,19 @@ let accountData = {
     ptoDaysTaken: ['2016-02-21', '2016-12-25', '2016-03-28'],
     createdAt: '2015-06-26'
   }
-}
+};
 
 /**
  * mock api client for retrieving account information
  */
 module.exports = {
-  getAccountInformation: (accountId) => {
-    var message = 'loading account information for "' + accountId + '"'
-    console.log(message.dim)
+  getAccountInformation: (accountId: string) => {
+    var message = 'loading account information for "' + accountId + '"';
+
     return new Promise((resolve, reject) => {
       setImmediate(() => {
-        resolve(accountData[accountId])
-      })
-    })
+        resolve(accountData[accountId]);
+      });
+    });
   }
-}
+};

@@ -228,7 +228,7 @@ describe('Engine', () => {
 
     test('changes the status to "RUNNING"', () => {
       let eventSpy = jest.fn();
-      engine.on('success', (event, almanac) => {
+      engine.on('success', (event: any, almanac: any) => {
         eventSpy();
         expect(engine.status).toBe('RUNNING');
       });
