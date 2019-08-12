@@ -1,0 +1,14 @@
+.lego-field-item-label::after {
+  content: ':';
+  margin: 0 8px 0 2px;
+}
+
+.lego-field-item-label--required::before {
+  display: inline-block;
+  margin-right: 4px;
+  font-family: SimSun;
+  content: '*';
+  line-height: 1;
+  font-size: 12px;
+  color: #f04134;
+}
