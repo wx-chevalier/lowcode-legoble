@@ -14,7 +14,7 @@
     "webpack",
     "typescript"
   ],
-  "author": "wxyyxc1992@github",
+  "author": "wx-chevalier@github",
   "prettier": {
     "printWidth": 100,
     "singleQuote": true
