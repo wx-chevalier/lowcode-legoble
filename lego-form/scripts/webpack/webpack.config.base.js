@@ -21,7 +21,7 @@ const moduleCSSLoader = {
     modules: false,
     sourceMap: false,
     importLoaders: 2,
-    localIdentName: '[name]__[local]'
+    localIdentName: '[folder]-[local]-[name]'
   }
 };
 
