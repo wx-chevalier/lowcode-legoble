@@ -5,4 +5,9 @@ lego-schema 是对于 Legoble 中涉及的所有低代码、可视化搭建相�
 # Motivation & Credits
 
 - [json-schema-editor-visual](https://github.com/YMFE/json-schema-editor-visual): A json-schema editor of high efficient and easy-to-use, base on React.
+
 - [tableschema-js](https://github.com/frictionlessdata/tableschema-js)
+
+- [ts-json-schema-generator](https://github.com/vega/ts-json-schema-generator)
+
+- [json-schema-to-typescript](https://github.com/bcherny/json-schema-to-typescript)
