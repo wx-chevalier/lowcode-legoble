@@ -1,6 +1,6 @@
 # lego-schema
 
-lego-schema 是对于 Legoble 中涉及的所有低代码、可视化搭建相关的 Schema 的统一定义，同时提供了多种可视化编辑器；其详细的规范讨论参考 [《低代码搭建》](http://ngte-web.gitbook.io?q=低代码搭建)一节。
+lego-schema 是对于 Legoble 中涉及的所有低代码、可视化搭建相关的 Schema 的统一定义，同时提供了多种可视化编辑器；其详细的规范讨论参考 [《低代码搭建》](https://github.com/wx-chevalier/Web-Series?q=低代码搭建)一节。
 
 # Motivation & Credits
 
