@@ -1,8 +1,8 @@
 ![ueact banner](https://user-images.githubusercontent.com/5803001/44896692-a51adc00-ad2b-11e8-9be9-ac495c77932e.png)
 
-# Legoable
+# Legoble
 
-Legoable 是构建可视化界面配置系统的，多种能力构成。
+Legoble 是构建可视化界面配置系统的，多种能力构成。
 
 - 表层部分
   - 布局相关的约束（包括响应式、在各端上的体现）
