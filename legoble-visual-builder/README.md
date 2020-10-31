@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/FE-Kits/legoble-visual-builder">
+  <a href="https://github.com/wx-chevalier/legoble-visual-builder">
     <img src="https://s2.ax1x.com/2020/01/06/lr21MT.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -16,14 +16,14 @@
   <p align="center">
     Legoble Visual Builder
     <br />
-    <a href="https://github.com/FE-Kits/legoble-visual-builder"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/wx-chevalier/legoble-visual-builder"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/FE-Kits/legoble-visual-builder">View Demo</a>
+    <a href="https://github.com/wx-chevalier/legoble-visual-builder">View Demo</a>
     ·
-    <a href="https://github.com/FE-Kits/legoble-visual-builder/issues">Report Bug</a>
+    <a href="https://github.com/wx-chevalier/legoble-visual-builder/issues">Report Bug</a>
     ·
-    <a href="https://github.com/FE-Kits/legoble-visual-builder/issues">Request Feature</a>
+    <a href="https://github.com/wx-chevalier/legoble-visual-builder/issues">Request Feature</a>
   </p>
 </p>
 
@@ -35,7 +35,7 @@
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`FE-Kits`, `legoble-visual-builder`, `twitter_handle`, `email`
+`wx-chevalier`, `legoble-visual-builder`, `twitter_handle`, `email`
 
 ## Nav | 导航
 
@@ -58,7 +58,7 @@ npm install npm@latest -g
 1. Clone the legoble-visual-builder
 
 ```sh
-git clone https://github.com/FE-Kits/legoble-visual-builder.git
+git clone https://github.com/wx-chevalier/legoble-visual-builder.git
 ```
 
 2. Install NPM packages
@@ -81,7 +81,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-See the [open issues](https://github.com/FE-Kits/legoble-visual-builder/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/wx-chevalier/legoble-visual-builder/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -132,13 +132,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/FE-Kits/legoble-visual-builder.svg?style=flat-square
-[contributors-url]: https://github.com/FE-Kits/legoble-visual-builder/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/FE-Kits/legoble-visual-builder.svg?style=flat-square
-[forks-url]: https://github.com/FE-Kits/legoble-visual-builder/network/members
-[stars-shield]: https://img.shields.io/github/stars/FE-Kits/legoble-visual-builder.svg?style=flat-square
-[stars-url]: https://github.com/FE-Kits/legoble-visual-builder/stargazers
-[issues-shield]: https://img.shields.io/github/issues/FE-Kits/legoble-visual-builder.svg?style=flat-square
-[issues-url]: https://github.com/FE-Kits/legoble-visual-builder/issues
-[license-shield]: https://img.shields.io/github/license/FE-Kits/legoble-visual-builder.svg?style=flat-square
-[license-url]: https://github.com/FE-Kits/legoble-visual-builder/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/wx-chevalier/legoble-visual-builder.svg?style=flat-square
+[contributors-url]: https://github.com/wx-chevalier/legoble-visual-builder/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wx-chevalier/legoble-visual-builder.svg?style=flat-square
+[forks-url]: https://github.com/wx-chevalier/legoble-visual-builder/network/members
+[stars-shield]: https://img.shields.io/github/stars/wx-chevalier/legoble-visual-builder.svg?style=flat-square
+[stars-url]: https://github.com/wx-chevalier/legoble-visual-builder/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wx-chevalier/legoble-visual-builder.svg?style=flat-square
+[issues-url]: https://github.com/wx-chevalier/legoble-visual-builder/issues
+[license-shield]: https://img.shields.io/github/license/wx-chevalier/legoble-visual-builder.svg?style=flat-square
+[license-url]: https://github.com/wx-chevalier/legoble-visual-builder/blob/master/LICENSE.txt
