@@ -1,0 +1,18 @@
+.lego-array-field .lego-array-field-item {
+  border-bottom: 1px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.lego-array-field-item-buttons {
+  margin-top: 5px;
+  text-align: right;
+}
+
+.lego-array-field-item-buttons button {
+  margin-left: 5px;
+}
+
+.lego-array-field-bottom {
+  text-align: right;
+}
